@@ -17,7 +17,7 @@ test.describe("Email Validation", () => {
 
     // Should show .edu validation error
     await expect(
-      page.locator("text=You must use a .edu email address")
+      page.locator("text=You must use a @barnard.edu or @columbia.edu email")
     ).toBeVisible();
 
     // Should NOT redirect - still on signup page
@@ -42,7 +42,7 @@ test.describe("Email Validation", () => {
       await page.click('button[type="submit"]');
 
       await expect(
-        page.locator("text=You must use a .edu email address")
+        page.locator("text=You must use a @barnard.edu or @columbia.edu email")
       ).toBeVisible();
     }
   });
@@ -51,14 +51,14 @@ test.describe("Email Validation", () => {
     await page.goto("/signup");
 
     await page.fill('input[id="displayName"]', "Good User");
-    await page.fill('input[id="email"]', `valid_${Date.now()}@university.edu`);
+    await page.fill('input[id="email"]', `valid_${Date.now()}@barnard.edu`);
     await page.fill('input[id="password"]', "password123");
     await page.fill('input[id="confirmPassword"]', "password123");
     await page.click('button[type="submit"]');
 
     // Should NOT show the .edu error
     await expect(
-      page.locator("text=You must use a .edu email address")
+      page.locator("text=You must use a @barnard.edu or @columbia.edu email")
     ).not.toBeVisible({ timeout: 3000 });
   });
 
@@ -66,7 +66,7 @@ test.describe("Email Validation", () => {
     await page.goto("/signup");
 
     await page.fill('input[id="displayName"]', "Test User");
-    await page.fill('input[id="email"]', "test@university.edu");
+    await page.fill('input[id="email"]', "test@barnard.edu");
     await page.fill('input[id="password"]', "password123");
     await page.fill('input[id="confirmPassword"]', "differentpassword");
     await page.click('button[type="submit"]');
@@ -78,7 +78,7 @@ test.describe("Email Validation", () => {
     await page.goto("/signup");
 
     await page.fill('input[id="displayName"]', "Test User");
-    await page.fill('input[id="email"]', "test@university.edu");
+    await page.fill('input[id="email"]', "test@barnard.edu");
     await page.fill('input[id="password"]', "abc");
     await page.fill('input[id="confirmPassword"]', "abc");
     await page.click('button[type="submit"]');
@@ -92,7 +92,7 @@ test.describe("Email Validation", () => {
     await page.goto("/signup");
 
     await page.fill('input[id="displayName"]', "A");
-    await page.fill('input[id="email"]', "test@university.edu");
+    await page.fill('input[id="email"]', "test@barnard.edu");
     await page.fill('input[id="password"]', "password123");
     await page.fill('input[id="confirmPassword"]', "password123");
     await page.click('button[type="submit"]');

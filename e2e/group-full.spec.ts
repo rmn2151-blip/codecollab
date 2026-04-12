@@ -59,7 +59,7 @@ test.describe("Group Full Prevention", () => {
     page,
   }) => {
     // Sign up first
-    const email = `fulltest_${Date.now()}@university.edu`;
+    const email = `fulltest_${Date.now()}@barnard.edu`;
     await page.goto("/signup");
     await page.fill('input[id="displayName"]', "Full Tester");
     await page.fill('input[id="email"]', email);

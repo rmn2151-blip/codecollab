@@ -4,7 +4,7 @@ import { test, expect } from "@playwright/test";
 // Note: This test requires pg_cron to be enabled in Supabase.
 // If pg_cron is not enabled, the auto-expiration must be tested manually.
 
-const TEST_EMAIL = `expire_test_${Date.now()}@university.edu`;
+const TEST_EMAIL = `expire_test_${Date.now()}@barnard.edu`;
 const TEST_PASSWORD = "testpass123";
 
 test.describe("Group Auto-Expiration", () => {

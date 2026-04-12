@@ -7,7 +7,7 @@ export default function Home() {
       <div className="max-w-lg text-center space-y-6">
         <h1 className="text-4xl font-bold tracking-tight">CodeCollab</h1>
         <p className="text-lg text-muted-foreground">
-          Group restaurant ordering for university students. Find a group,
+          Group restaurant ordering for Barnard and Columbia students. Find a group,
           join the chat, and decide what to order together.
         </p>
         <div className="flex gap-3 justify-center">

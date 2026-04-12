@@ -8,9 +8,13 @@ export const signUpSchema = z
     email: z
       .string()
       .email("Please enter a valid email")
-      .refine((email) => email.endsWith(".edu"), {
-        message: "You must use a .edu email address",
-      }),
+      .refine(
+        (email) =>
+          email.endsWith("@barnard.edu") || email.endsWith("@columbia.edu"),
+        {
+          message: "You must use a @barnard.edu or @columbia.edu email",
+        }
+      ),
     password: z.string().min(6, "Password must be at least 6 characters"),
     confirmPassword: z.string(),
   })

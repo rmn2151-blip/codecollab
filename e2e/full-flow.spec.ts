@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 // C32: Full flow - signup -> create group -> join group -> send messages -> close group
 // This test verifies the complete user journey through the application.
 
-const TEST_EMAIL = `testuser_${Date.now()}@university.edu`;
+const TEST_EMAIL = `testuser_${Date.now()}@barnard.edu`;
 const TEST_PASSWORD = "testpass123";
 const TEST_NAME = "Test User";
 
