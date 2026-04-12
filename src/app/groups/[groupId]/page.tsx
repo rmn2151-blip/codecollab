@@ -206,10 +206,8 @@ export default function GroupDetailPage() {
             <div className="space-y-2">
               {isLeader && !isClosed && (
                 <Dialog>
-                  <DialogTrigger>
-                    <Button variant="destructive" className="w-full">
-                      Dissolve Group
-                    </Button>
+                  <DialogTrigger className="inline-flex w-full items-center justify-center rounded-md bg-destructive text-destructive-foreground hover:bg-destructive/90 h-9 px-4 py-2 text-sm font-medium">
+                    Dissolve Group
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
