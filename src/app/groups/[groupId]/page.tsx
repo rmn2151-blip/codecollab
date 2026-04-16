@@ -162,6 +162,10 @@ export default function GroupDetailPage() {
     });
   }
 
+  async function handleLockGroup() {
+    await fetch(`/api/groups/${groupId}/lock`, { method: "POST" });
+  }
+
   async function handleDissolveGroup() {
     await supabase.rpc("close_group", { p_group_id: groupId });
   }
@@ -221,8 +225,8 @@ export default function GroupDetailPage() {
                   </p>
                 )}
               </div>
-              <Badge variant={isClosed ? "destructive" : "default"}>
-                {group?.status}
+              <Badge variant={isClosed ? "destructive" : group?.status === "ordering" ? "secondary" : "default"}>
+                {group?.status === "ordering" ? "locked" : group?.status}
               </Badge>
             </div>
             <ChatWindow
@@ -277,6 +281,11 @@ export default function GroupDetailPage() {
 
             {/* Actions */}
             <div className="space-y-2">
+              {isLeader && group?.status === "open" && (
+                <Button variant="secondary" className="w-full" onClick={handleLockGroup}>
+                  Lock Group
+                </Button>
+              )}
               {isLeader && !isClosed && (
                 <Dialog>
                   <DialogTrigger className="inline-flex w-full items-center justify-center rounded-md bg-destructive text-destructive-foreground hover:bg-destructive/90 h-9 px-4 py-2 text-sm font-medium">
