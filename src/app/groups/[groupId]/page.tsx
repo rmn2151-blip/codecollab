@@ -45,7 +45,7 @@ export default function GroupDetailPage() {
 
     const { data: groupData } = await supabase
       .from("groups")
-      .select("*, restaurants(name, accepts_flex_dollars, uber_eats_url, doordash_url, grubhub_url)")
+      .select("*, restaurants(name, accepts_flex_dollars, uber_eats_url, doordash_url, grubhub_url), tip, delivery_fee")
       .eq("id", groupId)
       .single();
     setGroup(groupData);
@@ -266,6 +266,9 @@ export default function GroupDetailPage() {
               leaderName={leaderPayment?.display_name}
               leaderVenmo={leaderPayment?.venmo_username}
               leaderZelle={leaderPayment?.zelle_handle}
+              isLeader={isLeader}
+              tip={group?.tip || 0}
+              deliveryFee={group?.delivery_fee || 0}
             />
 
             {group?.dietary_restrictions?.length > 0 && (
