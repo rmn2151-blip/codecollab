@@ -45,7 +45,7 @@ export default function GroupDetailPage() {
 
     const { data: groupData } = await supabase
       .from("groups")
-      .select("*, restaurants(name, accepts_flex_dollars)")
+      .select("*, restaurants(name, accepts_flex_dollars, uber_eats_url, doordash_url, grubhub_url)")
       .eq("id", groupId)
       .single();
     setGroup(groupData);
@@ -206,6 +206,20 @@ export default function GroupDetailPage() {
                 <p className="text-sm text-muted-foreground">
                   {group?.restaurants?.name}
                 </p>
+                {(group?.restaurants?.uber_eats_url || group?.restaurants?.doordash_url || group?.restaurants?.grubhub_url) && (
+                  <p className="text-sm text-muted-foreground">
+                    Order on:{" "}
+                    {group?.restaurants?.uber_eats_url && (
+                      <a href={group.restaurants.uber_eats_url} target="_blank" className="underline">Uber Eats ↗</a>
+                    )}
+                    {group?.restaurants?.doordash_url && (
+                      <> · <a href={group.restaurants.doordash_url} target="_blank" className="underline">DoorDash ↗</a></>
+                    )}
+                    {group?.restaurants?.grubhub_url && (
+                      <> · <a href={group.restaurants.grubhub_url} target="_blank" className="underline">Grubhub ↗</a></>
+                    )}
+                  </p>
+                )}
               </div>
               <Badge variant={isClosed ? "destructive" : "default"}>
                 {group?.status}
