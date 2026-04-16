@@ -29,6 +29,11 @@ export default function GroupDetailPage() {
   const [members, setMembers] = useState<any[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
   const [orderItems, setOrderItems] = useState<any[]>([]);
+  const [leaderPayment, setLeaderPayment] = useState<{
+    display_name?: string;
+    venmo_username?: string | null;
+    zelle_handle?: string | null;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
 
   const isLeader = group?.leader_id === user?.id;
@@ -64,6 +69,19 @@ export default function GroupDetailPage() {
       .eq("group_id", groupId)
       .order("created_at", { ascending: true });
     setOrderItems(orderData || []);
+
+    // Fetch leader's payment handles so members can pay them back.
+    // This is a separate query because RLS allows reading any profile's
+    // public fields, and we want this even if the leader isn't in the
+    // members join shape we already loaded.
+    if (groupData?.leader_id) {
+      const { data: leaderProfile } = await supabase
+        .from("profiles")
+        .select("display_name, venmo_username, zelle_handle")
+        .eq("id", groupData.leader_id)
+        .single();
+      setLeaderPayment(leaderProfile || null);
+    }
 
     setLoading(false);
   }, [groupId]);
@@ -226,6 +244,10 @@ export default function GroupDetailPage() {
               leaderId={group?.leader_id}
               orderItems={orderItems}
               isClosed={isClosed}
+              groupName={group?.name}
+              leaderName={leaderPayment?.display_name}
+              leaderVenmo={leaderPayment?.venmo_username}
+              leaderZelle={leaderPayment?.zelle_handle}
             />
 
             {group?.dietary_restrictions?.length > 0 && (

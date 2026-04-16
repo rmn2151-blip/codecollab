@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { OrderItemForm } from "./OrderItemForm";
 import { OrderItemRow } from "./OrderItemRow";
+import { PaymentButtons } from "./PaymentButtons";
 import { Badge } from "@/components/ui/badge";
 
 interface OrderItem {
@@ -26,6 +27,14 @@ interface OrderPanelProps {
   leaderId: string;
   orderItems: OrderItem[];
   isClosed: boolean;
+  /** Group name, used in the Venmo/Zelle payment note */
+  groupName?: string;
+  /** Leader's Venmo username (without @) */
+  leaderVenmo?: string | null;
+  /** Leader's Zelle email/phone */
+  leaderZelle?: string | null;
+  /** Leader's display name, for button tooltips / modal title */
+  leaderName?: string;
 }
 
 const formatCurrency = (amount: number) =>
@@ -38,6 +47,10 @@ export function OrderPanel({
   leaderId,
   orderItems,
   isClosed,
+  groupName,
+  leaderVenmo,
+  leaderZelle,
+  leaderName,
 }: OrderPanelProps) {
   // Group items by user and calculate totals
   const { itemsByUser, totalByUser, groupTotal } = useMemo(() => {
@@ -123,9 +136,21 @@ export function OrderPanel({
             {Array.from(totalByUser.entries())
               .filter(([userId]) => userId !== leaderId)
               .map(([userId, total]) => (
-                <div key={userId} className="flex items-center justify-between text-sm">
-                  <span>{getDisplayName(userId)}</span>
-                  <span className="font-mono text-orange-600">{formatCurrency(total)}</span>
+                <div key={userId} className="flex items-center justify-between gap-2 text-sm">
+                  <span className="truncate flex-1">{getDisplayName(userId)}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-orange-600">{formatCurrency(total)}</span>
+                    {/* Only show pay buttons to the person who actually owes money */}
+                    {userId === currentUserId && (
+                      <PaymentButtons
+                        amount={total}
+                        leaderName={leaderName || getDisplayName(leaderId)}
+                        venmoUsername={leaderVenmo}
+                        zelleHandle={leaderZelle}
+                        groupName={groupName}
+                      />
+                    )}
+                  </div>
                 </div>
               ))}
             {Array.from(totalByUser.entries()).filter(([userId]) => userId !== leaderId).length === 0 && (

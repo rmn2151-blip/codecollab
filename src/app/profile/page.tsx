@@ -17,6 +17,8 @@ export default function ProfilePage() {
     display_name: "",
     has_flex_dollars: false,
     dietary_restrictions: [] as string[],
+    venmo_username: "",
+    zelle_handle: "",
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -30,7 +32,7 @@ export default function ProfilePage() {
       if (user) {
         const { data } = await supabase
           .from("profiles")
-          .select("display_name, has_flex_dollars, dietary_restrictions")
+          .select("display_name, has_flex_dollars, dietary_restrictions, venmo_username, zelle_handle")
           .eq("id", user.id)
           .single();
         if (data) {
@@ -38,6 +40,8 @@ export default function ProfilePage() {
             display_name: data.display_name || "",
             has_flex_dollars: data.has_flex_dollars || false,
             dietary_restrictions: data.dietary_restrictions || [],
+            venmo_username: data.venmo_username || "",
+            zelle_handle: data.zelle_handle || "",
           });
         }
       }
@@ -57,6 +61,8 @@ export default function ProfilePage() {
         display_name: profile.display_name,
         has_flex_dollars: profile.has_flex_dollars,
         dietary_restrictions: profile.dietary_restrictions,
+        venmo_username: profile.venmo_username.trim().replace(/^@/, "") || null,
+        zelle_handle: profile.zelle_handle.trim() || null,
       })
       .eq("id", user.id);
 
@@ -127,6 +133,40 @@ export default function ProfilePage() {
                       </label>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t">
+                <Label className="text-base font-semibold">Payment Handles (optional)</Label>
+                <p className="text-xs text-muted-foreground">
+                  Shown to your group members so they can pay you back when you're the group leader.
+                </p>
+
+                <div className="space-y-1">
+                  <Label htmlFor="venmo" className="text-sm">Venmo username</Label>
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm text-muted-foreground">@</span>
+                    <Input
+                      id="venmo"
+                      placeholder="your-venmo"
+                      value={profile.venmo_username}
+                      onChange={(e) =>
+                        setProfile({ ...profile, venmo_username: e.target.value })
+                      }
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <Label htmlFor="zelle" className="text-sm">Zelle email or phone</Label>
+                  <Input
+                    id="zelle"
+                    placeholder="you@barnard.edu or (555) 123-4567"
+                    value={profile.zelle_handle}
+                    onChange={(e) =>
+                      setProfile({ ...profile, zelle_handle: e.target.value })
+                    }
+                  />
                 </div>
               </div>
 
