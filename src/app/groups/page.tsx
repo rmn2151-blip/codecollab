@@ -42,6 +42,18 @@ export default function GroupsPage() {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
 
+      // Auto-apply user's saved dietary restrictions as default filter
+      if (user) {
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("dietary_restrictions")
+          .eq("id", user.id)
+          .single();
+        if (profile?.dietary_restrictions?.length > 0) {
+          setFilters((prev) => ({ ...prev, dietary: profile.dietary_restrictions }));
+        }
+      }
+
       const { data: restaurantData } = await supabase
         .from("restaurants")
         .select("id, name")

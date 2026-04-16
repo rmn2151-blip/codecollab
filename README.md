@@ -56,13 +56,17 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 ```
 
-### 4. Run the database migration
+### 4. Run the database migrations
 
 1. Go to your Supabase dashboard > **SQL Editor**
-2. Copy the contents of `supabase/migrations/001_initial_schema.sql`
-3. Paste and click **Run**
+2. Run each migration file **in order**:
 
-This creates all tables, RLS policies, database functions, and seeds 20 restaurants.
+| File | What it does |
+|------|-------------|
+| `supabase/migrations/001_initial_schema.sql` | Creates all core tables, RLS policies, RPC functions, seeds 20 restaurants |
+| `supabase/migrations/002_order_items.sql` | Adds order tracking table |
+| `supabase/migrations/003_payment_handles.sql` | Adds Venmo/Zelle fields to profiles |
+| `supabase/migrations/004_delivery_urls.sql` | Adds Uber Eats, DoorDash, Grubhub URL fields to restaurants |
 
 ### 5. Enable Realtime
 
@@ -70,6 +74,7 @@ In your Supabase dashboard > **Database > Tables**, enable Realtime for:
 - `messages`
 - `groups`
 - `group_members`
+- `order_items`
 
 ### 6. (Optional) Enable auto-expiration
 
