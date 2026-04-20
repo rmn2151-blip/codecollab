@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; 
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { signUpSchema, type SignUpFormData } from "@/lib/validators/auth";
@@ -20,6 +20,7 @@ export default function SignupPage() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -41,6 +42,7 @@ export default function SignupPage() {
       email: formData.email,
       password: formData.password,
       options: {
+        emailRedirectTo: `${window.location.origin}/groups`,
         data: {
           display_name: formData.displayName,
         },
@@ -53,10 +55,24 @@ export default function SignupPage() {
       return;
     }
 
-    router.push("/groups");
-    router.refresh();
+    setSubmitted(true);
+    setLoading(false);
   }
-
+  
+    if (submitted) {
+    return (
+      <div className="flex min-h-screen items-center justify-center px-4">
+        <Card className="w-full max-w-md">
+          <CardHeader className="text-center">
+            <CardTitle>Check your email</CardTitle>
+            <CardDescription>
+              We sent a confirmation link to {formData.email}. Click it to activate your account.
+            </CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+    );
+  }
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
