@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation"; 
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
-import { signUpSchema, type SignUpFormData } from "@/lib/validators/auth";
+import { signUpSchema } from "@/lib/validators/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     displayName: "",
     email: "",
@@ -58,8 +56,8 @@ export default function SignupPage() {
     setSubmitted(true);
     setLoading(false);
   }
-  
-    if (submitted) {
+
+  if (submitted) {
     return (
       <div className="flex min-h-screen items-center justify-center px-4">
         <Card className="w-full max-w-md">
