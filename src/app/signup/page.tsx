@@ -4,10 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { signUpSchema } from "@/lib/validators/auth";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function SignupPage() {
   const [formData, setFormData] = useState({
@@ -59,86 +55,191 @@ export default function SignupPage() {
 
   if (submitted) {
     return (
-      <div className="flex min-h-screen items-center justify-center px-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <CardTitle>Check your email</CardTitle>
-            <CardDescription>
-              We sent a confirmation link to {formData.email}. Click it to activate your account.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+      <div className="min-h-screen bg-[#f0f2ff] flex items-center justify-center px-4">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 w-full max-w-md p-8 text-center">
+          <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-medium text-gray-900 mb-2">Check your email</h2>
+          <p className="text-sm text-gray-500">
+            We sent a confirmation link to <span className="font-medium text-gray-700">{formData.email}</span>. Click it to activate your account.
+          </p>
+        </div>
       </div>
     );
   }
+
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Create an account</CardTitle>
-          <CardDescription>Use your @barnard.edu or @columbia.edu email</CardDescription>
-        </CardHeader>
-        <CardContent>
+    <div className="min-h-screen bg-[#f0f2ff] flex flex-col">
+      {/* Navbar */}
+      <nav className="flex justify-between items-center px-8 py-4 bg-white border-b border-gray-100">
+        <Link href="/" className="text-lg font-medium text-blue-700 tracking-tight">
+          CodeCollab
+        </Link>
+        <div className="flex gap-3">
+          <Link
+            href="/login"
+            className="px-4 py-2 text-sm border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            Sign in
+          </Link>
+          <Link
+            href="/signup"
+            className="px-4 py-2 text-sm bg-blue-700 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors"
+          >
+            Get started
+          </Link>
+        </div>
+      </nav>
+
+      {/* Decorative elements */}
+      <div className="flex-1 flex items-center justify-center px-4 py-12 relative overflow-hidden">
+        {/* Left decoration */}
+        <div className="absolute left-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6">
+          <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+            </svg>
+          </div>
+          <div className="text-yellow-400 text-2xl">✦</div>
+          <div className="w-4 h-4 rounded-full bg-purple-200" />
+        </div>
+
+        {/* Right decoration */}
+        <div className="absolute right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6">
+          <div className="bg-green-100 text-green-700 text-sm px-3 py-2 rounded-xl max-w-[140px] text-center">
+            Let&apos;s decide what to eat! 🍕
+          </div>
+          <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+            <span className="text-white text-lg font-medium">···</span>
+          </div>
+          <div className="text-gray-300 text-2xl">✦</div>
+        </div>
+
+        {/* Form card */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 w-full max-w-md p-8 relative z-10">
+          {/* Badge */}
+          <div className="flex justify-center mb-4">
+            <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1 rounded-full">
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
+              </svg>
+              Barnard & Columbia only
+            </span>
+          </div>
+
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-medium text-gray-900 mb-1">
+              Create <span className="text-blue-600">your account</span>
+            </h1>
+            <p className="text-sm text-gray-500">Use your @barnard.edu or @columbia.edu email</p>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-4">
             {errors.form && (
-              <p className="text-sm text-red-500 text-center">{errors.form}</p>
+              <p className="text-sm text-red-500 text-center bg-red-50 py-2 px-3 rounded-lg">{errors.form}</p>
             )}
-            <div className="space-y-2">
-              <Label htmlFor="displayName">Display Name</Label>
-              <Input
-                id="displayName"
-                placeholder="Your name"
-                value={formData.displayName}
-                onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
-              />
-              {errors.displayName && <p className="text-sm text-red-500">{errors.displayName}</p>}
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="displayName">
+                Display name
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <input
+                  id="displayName"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.displayName}
+                  onChange={(e) => setFormData({ ...formData, displayName: e.target.value })}
+                  className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+              {errors.displayName && <p className="text-xs text-red-500 mt-1">{errors.displayName}</p>}
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="uni@barnard.edu"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              />
-              {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="email">
+                Email
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="username@barnard.edu"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+              {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="At least 6 characters"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              />
-              {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="password">
+                Password
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="At least 6 characters"
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+              {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password}</p>}
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={formData.confirmPassword}
-                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-              />
-              {errors.confirmPassword && (
-                <p className="text-sm text-red-500">{errors.confirmPassword}</p>
-              )}
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="confirmPassword">
+                Confirm password
+              </label>
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                />
+              </div>
+              {errors.confirmPassword && <p className="text-xs text-red-500 mt-1">{errors.confirmPassword}</p>}
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Sign up"}
-            </Button>
-            <p className="text-center text-sm text-muted-foreground">
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 bg-blue-700 text-white rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed mt-2"
+            >
+              {loading ? "Creating account..." : "Create account"}
+            </button>
+
+            <p className="text-center text-sm text-gray-500">
               Already have an account?{" "}
-              <Link href="/login" className="underline hover:text-primary">
+              <Link href="/login" className="text-blue-600 hover:underline font-medium">
                 Sign in
               </Link>
             </p>
           </form>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
+
