@@ -50,7 +50,7 @@ export default function GroupsPage() {
           .eq("id", user.id)
           .single();
         if (profile?.dietary_restrictions?.length > 0) {
-          setFilters((prev) => ({ ...prev, dietary: profile.dietary_restrictions }));
+          setFilters((prev) => ({ ...prev, dietary: profile!.dietary_restrictions }));
         }
       }
 
