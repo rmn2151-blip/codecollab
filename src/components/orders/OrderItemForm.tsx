@@ -16,10 +16,12 @@ export function OrderItemForm({ groupId, userId, disabled }: OrderItemFormProps)
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
+    setIsSubmitting(true);
 
     const parsed = orderItemSchema.safeParse({
       itemName: itemName.trim(),
@@ -28,6 +30,7 @@ export function OrderItemForm({ groupId, userId, disabled }: OrderItemFormProps)
 
     if (!parsed.success) {
       setError(parsed.error.issues[0].message);
+      setIsSubmitting(false);
       return;
     }
 
@@ -41,11 +44,13 @@ export function OrderItemForm({ groupId, userId, disabled }: OrderItemFormProps)
 
     if (insertError) {
       setError(insertError.message);
+      setIsSubmitting(false);
       return;
     }
 
     setItemName("");
     setPrice("");
+    setIsSubmitting(false);
   }
 
   return (
@@ -54,8 +59,8 @@ export function OrderItemForm({ groupId, userId, disabled }: OrderItemFormProps)
         <Input
           placeholder="Item name"
           value={itemName}
-          onChange={(e) => setItemName(e.target.value)}
-          disabled={disabled}
+          onChange={(e) => { setItemName(e.target.value); setError(""); }}
+          disabled={disabled || isSubmitting}
           className="flex-1"
         />
         <Input
@@ -64,12 +69,12 @@ export function OrderItemForm({ groupId, userId, disabled }: OrderItemFormProps)
           step="0.01"
           min="0.01"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          disabled={disabled}
+          onChange={(e) => { setPrice(e.target.value); setError(""); }}
+          disabled={disabled || isSubmitting}
           className="w-24"
         />
-        <Button type="submit" size="sm" disabled={disabled || !itemName.trim() || !price}>
-          Add
+        <Button type="submit" size="sm" disabled={disabled || isSubmitting || !itemName.trim() || !price}>
+          {isSubmitting ? "Adding..." : "Add"}
         </Button>
       </div>
       {error && <p className="text-xs text-red-500">{error}</p>}
