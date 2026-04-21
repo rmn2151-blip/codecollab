@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -11,12 +12,16 @@ interface NavbarProps {
 
 export function Navbar({ user }: NavbarProps) {
   const router = useRouter();
+  const [logoutError, setLogoutError] = useState<string | null>(null);
 
   async function handleLogout() {
     const supabase = createClient();
-    await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      setLogoutError("Failed to log out. Please try again.");
+      return;
+    }
     router.push("/login");
-    router.refresh();
   }
 
   return (
@@ -39,9 +44,14 @@ export function Navbar({ user }: NavbarProps) {
             <span className="text-sm text-muted-foreground">
               {user.user_metadata?.display_name || user.email}
             </span>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
-              Log out
-            </Button>
+            <div className="flex flex-col items-end gap-0.5">
+              <Button variant="outline" size="sm" onClick={handleLogout}>
+                Log out
+              </Button>
+              {logoutError && (
+                <p className="text-xs text-red-500">{logoutError}</p>
+              )}
+            </div>
           </div>
         ) : (
           <div className="flex items-center gap-2">
