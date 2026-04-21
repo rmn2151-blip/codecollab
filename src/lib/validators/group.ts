@@ -10,7 +10,12 @@ export const createGroupSchema = z.object({
     .min(MIN_GROUP_MEMBERS, `Minimum ${MIN_GROUP_MEMBERS} members`)
     .max(MAX_GROUP_MEMBERS, `Maximum ${MAX_GROUP_MEMBERS} members`),
   orderDeadline: z.string().refine(
-    (val) => new Date(val) > new Date(),
+    (val) => {
+      const selected = new Date(val);
+      const now = new Date();
+      now.setSeconds(0, 0);
+      return selected > now;
+    },
     { message: "Deadline must be in the future" }
   ).refine(
     (val) => {
