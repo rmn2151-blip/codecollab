@@ -49,22 +49,21 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* LEFT PANEL */}
-      <div className="hidden lg:block w-[48%] relative overflow-hidden">
-        {/* Food photo fills entire left panel */}
+      {/* LEFT PANEL — food photo with overlay content */}
+      <div className="hidden lg:flex w-[48%] relative overflow-hidden flex-col">
+        {/* Food background image */}
         <img
-          src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=900&auto=format&fit=crop&q=80"
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80"
           alt="Colorful food bowl"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
+        {/* Lavender overlay on top half */}
+        <div className="absolute inset-0 bg-[#e8eaf6] opacity-80" style={{clipPath: 'ellipse(120% 60% at 50% 0%)' }} />
 
-        {/* Strong lavender overlay on TOP portion only */}
-        <div className="absolute top-0 left-0 right-0 h-[55%] bg-[#dde0f5]" style={{opacity: 0.92}} />
+        {/* Big decorative circles */}
+        <div className="absolute top-[-60px] right-[-30px] w-56 h-56 rounded-full bg-[#c5caf0] opacity-50" />
 
-        {/* Big decorative circle top-right */}
-        <div className="absolute top-[-50px] right-[-40px] w-52 h-52 rounded-full bg-[#bcc1e8] opacity-70" />
-
-        {/* All text content sits on top */}
+        {/* Content on top of image */}
         <div className="relative z-10 flex flex-col h-full p-10">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -74,33 +73,39 @@ export default function LoginPage() {
             <span className="text-lg font-medium text-blue-700">Code<span className="text-blue-500">Collab</span></span>
           </div>
 
-          {/* Welcome text — pushed down with margin */}
-          <div className="mt-12">
-            <h2 className="text-5xl font-bold text-gray-900 mb-4">
+          {/* Welcome text */}
+          <div className="mt-10">
+            <h2 className="text-5xl font-bold text-gray-900 mb-3">
               Welcome <span className="text-blue-600">back</span>
             </h2>
-            <p className="text-gray-600 text-base leading-relaxed">
+            <p className="text-gray-600 text-lg leading-relaxed">
               Good food, great company,<br />even better together.
             </p>
           </div>
 
-          {/* Dashed line + people icon */}
-          <div className="relative mt-10">
-            <svg className="w-72 h-16" viewBox="0 0 288 64" fill="none">
-              <path d="M 70 50 Q 160 10 260 35" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="6 4" fill="none"/>
-              <circle cx="260" cy="35" r="7" fill="#3b82f6"/>
+          {/* Dashed line with people icon and dot */}
+          <div className="relative mt-8">
+            <svg className="w-64 h-20" viewBox="0 0 260 80" fill="none">
+              <path d="M 20 60 Q 120 10 220 40" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="6 4" fill="none"/>
+              <circle cx="220" cy="40" r="7" fill="#3b82f6"/>
             </svg>
-            <div className="absolute left-0 top-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+            <div className="absolute left-0 top-6 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
               <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
               </svg>
             </div>
+            {/* Small spark lines near dot */}
+            <svg className="absolute top-2 left-44 w-16 h-12" viewBox="0 0 64 48" fill="none">
+              <line x1="32" y1="8" x2="32" y2="2" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="48" y1="16" x2="54" y2="10" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="16" y1="16" x2="10" y2="10" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
           </div>
         </div>
       </div>
 
-      {/* RIGHT PANEL */}
-      <div className="flex-1 bg-[#f4f5fb] flex items-center justify-center px-8 py-12">
+      {/* RIGHT PANEL — form */}
+      <div className="flex-1 bg-[#f8f9ff] flex items-center justify-center px-8 py-12">
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="flex items-center gap-2 mb-8 lg:hidden">
@@ -161,7 +166,7 @@ export default function LoginPage() {
 
               <div className="flex items-center justify-between">
                 <label className="flex items-center gap-2 text-sm text-gray-500 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300" />
+                  <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-blue-600" />
                   Remember me
                 </label>
                 <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
