@@ -91,7 +91,7 @@ export default function SignupPage() {
       <div className="flex-1 flex items-center justify-center px-4 py-12 relative overflow-hidden">
 
         {/* LEFT — people circle with short burst sparks */}
-        <div className="absolute left-24 top-1/2 -translate-y-1/2 hidden lg:block">
+         <div className="pointer-events-none absolute left-8 xl:left-20 2xl:left-24 top-1/2 -translate-y-1/2 hidden xl:block"> 
           <div className="relative w-24 h-24 flex items-center justify-center">
             {/* Short burst sparks — only near the circle */}
             <svg className="absolute -inset-6 w-36 h-36" viewBox="0 0 144 144">
@@ -120,8 +120,7 @@ export default function SignupPage() {
         </div>
 
         {/* RIGHT — chat bubble + typing bubble each with their own short sparks */}
-        <div className="absolute right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 items-start">
-
+ <div className="absolute right-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 items-start">
           {/* Green message bubble with short sparks */}
           <div className="relative">
             <svg className="absolute -inset-5 w-52 h-28 pointer-events-none" viewBox="0 0 208 112">
