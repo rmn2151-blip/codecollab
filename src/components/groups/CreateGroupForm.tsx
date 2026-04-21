@@ -34,7 +34,12 @@ export function CreateGroupForm({ restaurants }: CreateGroupFormProps) {
     e.preventDefault();
     setErrors({});
 
-    const result = createGroupSchema.safeParse(formData);
+    const result = createGroupSchema.safeParse({
+      ...formData,
+      orderDeadline: formData.orderDeadline
+        ? new Date(formData.orderDeadline).toISOString()
+        : "",
+    });
     if (!result.success) {
       const fieldErrors: Record<string, string> = {};
       result.error.issues.forEach((issue) => {
