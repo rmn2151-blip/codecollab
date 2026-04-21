@@ -90,21 +90,21 @@ export default function SignupPage() {
 
       <div className="flex-1 flex items-center justify-center px-4 py-12 relative overflow-hidden">
 
-        {/* LEFT — people circle with radiating sparks spread around it */}
-        <div className="absolute left-20 top-1/2 -translate-y-1/2 hidden lg:block">
-          <div className="relative w-40 h-40 flex items-center justify-center">
-            {/* SVG sparks radiating outward */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 160">
-              {/* top */}
-              <line x1="80" y1="80" x2="80" y2="8" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+        {/* LEFT — people circle with short burst sparks */}
+        <div className="absolute left-24 top-1/2 -translate-y-1/2 hidden lg:block">
+          <div className="relative w-24 h-24 flex items-center justify-center">
+            {/* Short burst sparks — only near the circle */}
+            <svg className="absolute -inset-6 w-36 h-36" viewBox="0 0 144 144">
+              {/* top — short dash */}
+              <line x1="72" y1="20" x2="72" y2="8" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
               {/* top-right */}
-              <line x1="80" y1="80" x2="130" y2="20" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="100" y1="30" x2="108" y2="22" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
               {/* right */}
-              <line x1="80" y1="80" x2="152" y2="80" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="118" y1="72" x2="130" y2="72" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
               {/* top-left */}
-              <line x1="80" y1="80" x2="30" y2="20" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="44" y1="30" x2="36" y2="22" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
               {/* left */}
-              <line x1="80" y1="80" x2="8" y2="80" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="26" y1="72" x2="14" y2="72" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             {/* Circle icon */}
             <div className="relative z-10 w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center shadow-sm">
@@ -113,36 +113,42 @@ export default function SignupPage() {
               </svg>
             </div>
           </div>
-          {/* Gold star — offset bottom-left of the circle */}
-          <div className="absolute -bottom-6 -left-2 text-yellow-400 text-2xl">✦</div>
-          {/* Purple dot — further below */}
-          <div className="absolute -bottom-14 left-10 w-5 h-5 rounded-full bg-purple-200" />
+          {/* Gold star — separate, below-left */}
+          <div className="absolute -bottom-10 -left-6 text-yellow-400 text-2xl">✦</div>
+          {/* Purple dot — separate, further below */}
+          <div className="absolute -bottom-20 left-6 w-5 h-5 rounded-full bg-purple-200" />
         </div>
 
-        {/* RIGHT — chat bubble + typing bubble, each with sparks */}
-        <div className="absolute right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-5 items-start">
+        {/* RIGHT — chat bubble + typing bubble each with their own short sparks */}
+        <div className="absolute right-16 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-6 items-start">
 
-          {/* Green message bubble with sparks */}
+          {/* Green message bubble with short sparks */}
           <div className="relative">
-            <svg className="absolute -inset-6 w-56 h-24 pointer-events-none" viewBox="0 0 224 96">
-              <line x1="112" y1="48" x2="112" y2="4" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="112" y1="48" x2="200" y2="10" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="112" y1="48" x2="220" y2="48" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="112" y1="48" x2="24" y2="10" stroke="#86efac" strokeWidth="2.5" strokeLinecap="round"/>
+            <svg className="absolute -inset-5 w-52 h-28 pointer-events-none" viewBox="0 0 208 112">
+              {/* top */}
+              <line x1="104" y1="12" x2="104" y2="2" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round"/>
+              {/* top-right */}
+              <line x1="168" y1="20" x2="176" y2="12" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round"/>
+              {/* right */}
+              <line x1="196" y1="56" x2="206" y2="56" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round"/>
+              {/* top-left */}
+              <line x1="40" y1="20" x2="32" y2="12" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <div className="relative z-10 bg-green-100 text-green-800 text-sm px-4 py-3 rounded-2xl rounded-br-sm shadow-sm max-w-[160px]">
               Let&apos;s decide what to eat! 🍕
             </div>
-            {/* tail */}
             <div className="absolute -bottom-1.5 right-3 w-3 h-3 bg-green-100 rotate-45" />
           </div>
 
-          {/* Blue typing bubble with sparks */}
-          <div className="relative ml-8">
-            <svg className="absolute -inset-6 w-40 h-24 pointer-events-none" viewBox="0 0 160 96">
-              <line x1="80" y1="48" x2="80" y2="4" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="80" y1="48" x2="148" y2="15" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="80" y1="48" x2="12" y2="15" stroke="#93c5fd" strokeWidth="2.5" strokeLinecap="round"/>
+          {/* Blue typing bubble with short sparks */}
+          <div className="relative ml-10">
+            <svg className="absolute -inset-5 w-32 h-24 pointer-events-none" viewBox="0 0 128 96">
+              {/* top */}
+              <line x1="64" y1="10" x2="64" y2="2" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
+              {/* top-right */}
+              <line x1="100" y1="20" x2="108" y2="12" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
+              {/* top-left */}
+              <line x1="28" y1="20" x2="20" y2="12" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <div className="relative z-10 w-16 h-10 bg-blue-500 rounded-2xl rounded-bl-sm flex items-center justify-center gap-1 shadow-sm">
               <div className="w-1.5 h-1.5 bg-white rounded-full" />
@@ -151,8 +157,8 @@ export default function SignupPage() {
             </div>
           </div>
 
-          {/* Gray star bottom right */}
-          <div className="text-gray-300 text-2xl ml-2">✦</div>
+          {/* Gray star — separate below */}
+          <div className="text-gray-300 text-2xl ml-4">✦</div>
         </div>
 
         {/* Form card */}
