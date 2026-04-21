@@ -49,45 +49,63 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* LEFT PANEL */}
-      <div className="hidden lg:flex w-[45%] bg-[#eef0fb] flex-col justify-between p-10 relative overflow-hidden">
+      {/* LEFT PANEL — food photo with overlay content */}
+      <div className="hidden lg:flex w-[48%] relative overflow-hidden flex-col">
+        {/* Food background image */}
+        <img
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80"
+          alt="Colorful food bowl"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        {/* Lavender overlay on top half */}
+        <div className="absolute inset-0 bg-[#e8eaf6] opacity-80" style={{clipPath: 'ellipse(120% 60% at 50% 0%)' }} />
+
         {/* Big decorative circles */}
-        <div className="absolute top-[-80px] right-[-40px] w-64 h-64 rounded-full bg-[#d8dbf5] opacity-60" />
-        <div className="absolute bottom-[-60px] left-[-40px] w-56 h-56 rounded-full bg-[#d8dbf5] opacity-50" />
+        <div className="absolute top-[-60px] right-[-30px] w-56 h-56 rounded-full bg-[#c5caf0] opacity-50" />
 
-        {/* Logo */}
-        <div className="flex items-center gap-2 relative z-10">
-          <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-          </svg>
-          <span className="text-lg font-medium text-blue-700">CodeCollab</span>
-        </div>
-
-        {/* Welcome text */}
-        <div className="relative z-10">
-          <h2 className="text-4xl font-medium text-gray-900 mb-3">Welcome back</h2>
-          <p className="text-gray-500 text-base leading-relaxed">
-            Great to see you again.<br />Let&apos;s pick up where you left off.
-          </p>
-        </div>
-
-        {/* Dashed line with people icon and dot */}
-        <div className="relative z-10 mb-8">
-          <svg className="w-full h-24" viewBox="0 0 300 96" fill="none">
-            <path d="M 60 70 Q 150 20 250 75" stroke="#a5b4fc" strokeWidth="1.5" strokeDasharray="6 4" fill="none"/>
-            <circle cx="250" cy="75" r="6" fill="#6366f1"/>
-          </svg>
-          {/* People circle on the line */}
-          <div className="absolute left-8 top-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-            <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        {/* Content on top of image */}
+        <div className="relative z-10 flex flex-col h-full p-10">
+          {/* Logo */}
+          <div className="flex items-center gap-2">
+            <svg className="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+            </svg>
+            <span className="text-lg font-medium text-blue-700">Code<span className="text-blue-500">Collab</span></span>
+          </div>
+
+          {/* Welcome text */}
+          <div className="mt-10">
+            <h2 className="text-5xl font-bold text-gray-900 mb-3">
+              Welcome <span className="text-blue-600">back</span>
+            </h2>
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Good food, great company,<br />even better together.
+            </p>
+          </div>
+
+          {/* Dashed line with people icon and dot */}
+          <div className="relative mt-8">
+            <svg className="w-64 h-20" viewBox="0 0 260 80" fill="none">
+              <path d="M 20 60 Q 120 10 220 40" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="6 4" fill="none"/>
+              <circle cx="220" cy="40" r="7" fill="#3b82f6"/>
+            </svg>
+            <div className="absolute left-0 top-6 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+              </svg>
+            </div>
+            {/* Small spark lines near dot */}
+            <svg className="absolute top-2 left-44 w-16 h-12" viewBox="0 0 64 48" fill="none">
+              <line x1="32" y1="8" x2="32" y2="2" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="48" y1="16" x2="54" y2="10" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
+              <line x1="16" y1="16" x2="10" y2="10" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </div>
         </div>
       </div>
 
       {/* RIGHT PANEL — form */}
-      <div className="flex-1 bg-white flex items-center justify-center px-8 py-12">
+      <div className="flex-1 bg-[#f8f9ff] flex items-center justify-center px-8 py-12">
         <div className="w-full max-w-md">
           {/* Mobile logo */}
           <div className="flex items-center gap-2 mb-8 lg:hidden">
@@ -99,7 +117,7 @@ export default function LoginPage() {
 
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
             <div className="text-center mb-6">
-              <h1 className="text-3xl font-medium text-gray-900 mb-1">Welcome back</h1>
+              <h1 className="text-3xl font-bold text-gray-900 mb-1">Welcome back</h1>
               <p className="text-sm text-gray-500">Sign in to your account</p>
             </div>
 
@@ -111,7 +129,7 @@ export default function LoginPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="email">Email</label>
                 <div className="relative">
-                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                   </svg>
                   <input id="email" type="email" placeholder="you@barnard.edu" value={formData.email}
@@ -124,7 +142,7 @@ export default function LoginPage() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5" htmlFor="password">Password</label>
                 <div className="relative">
-                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
                   </svg>
                   <input id="password" type={showPassword ? "text" : "password"} placeholder="Enter your password" value={formData.password}
@@ -158,9 +176,7 @@ export default function LoginPage() {
 
               <button type="submit" disabled={loading}
                 className="w-full py-3 bg-blue-700 text-white rounded-lg font-medium text-sm hover:bg-blue-800 transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-2">
-                {loading ? "Signing in..." : (
-                  <>Sign in <span>→</span></>
-                )}
+                {loading ? "Signing in..." : <><span>Sign in</span><span>→</span></>}
               </button>
 
               <p className="text-center text-sm text-gray-500">
