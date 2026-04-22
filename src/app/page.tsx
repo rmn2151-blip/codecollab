@@ -20,172 +20,165 @@ export default function Home() {
 
       {/* ── HERO ── */}
       {/*
-        Layout strategy:
-        - Outer div is position:relative, full width, fixed height
-        - Text col is absolute left
-        - Bowl is absolute, centered in the page
-        - Chat card is absolute, right side
-        This gives us pixel-perfect control over positioning
+        FIX: Outer div centers the hero, inner div has FIXED width (1440px).
+        All absolute children are relative to the 1440px box — positions stay locked on resize.
       */}
       <div className="relative w-full overflow-hidden" style={{ height: "560px", background: "#f0ece3" }}>
+        <div className="relative mx-auto" style={{ width: "1440px", height: "560px" }}>
 
-        {/* Dotted grid — top right */}
-        <div className="absolute top-3 right-3 pointer-events-none opacity-40" style={{ zIndex: 1 }}>
-          {Array.from({ length: 7 }).map((_, r) => (
-            <div key={r} className="flex gap-2.5 mb-2.5">
-              {Array.from({ length: 8 }).map((_, c) => (
-                <div key={c} className="w-1.5 h-1.5 rounded-full" style={{ background: "#d4a0a0" }} />
-              ))}
-            </div>
-          ))}
-        </div>
-
-        {/* ── TEXT — pinned left ── */}
-        <div className="absolute" style={{ left: "80px", top: "50%", transform: "translateY(-50%)", width: "340px", zIndex: 10 }}>
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full mb-5 border" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-            </svg>
-            Barnard &amp; Columbia only
-          </span>
-
-          {/* Headline: "ORDER FOOD TOGETHER," on line 1, "WITHOUT THE CHAOS" on line 2 */}
-          <h1 className="font-black uppercase mb-4" style={{ fontSize: "3rem", color: "#1a1a0e", lineHeight: 1.05 }}>
-            ORDER FOOD TOGETHER,<br />
-            <span style={{ color: "#6b8f3e" }}>WITHOUT THE CHAOS</span>
-          </h1>
-
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "#666" }}>
-            Create a group, pick a restaurant, chat with your crew in real time, and place one order. No more 47-message group chats.
-          </p>
-
-          <div className="flex gap-3 mb-3">
-            <Link href="/signup" className="inline-flex items-center gap-2 px-5 py-2.5 text-white rounded-xl font-bold text-sm hover:opacity-90 shadow-md" style={{ background: "#5a7a2e" }}>
-              Get started free
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
-            </Link>
-            <Link href="/login" className="inline-flex items-center justify-center px-5 py-2.5 border-2 border-gray-800 text-gray-800 rounded-xl text-sm font-bold hover:bg-gray-50 bg-white">
-              Sign in
-            </Link>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <svg className="w-3.5 h-3.5" style={{ color: "#e88080" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
-            <span className="text-xs" style={{ color: "#999" }}>Free to use for students</span>
-          </div>
-        </div>
-
-        {/* ── BOWL — centered-right, behind card ── */}
-        {/* Positioned so its center is around x=680, vertically centered */}
-        <div className="absolute" style={{ left: "700px", top: "50%", transform: "translateY(-50%)", zIndex: 5 }}>
-          {/* Pink spark */}
-          <svg className="absolute pointer-events-none" style={{ top: "30px", left: "30px", zIndex: 6 }} width="30" height="30" viewBox="0 0 32 32" fill="none">
-            <line x1="16" y1="2" x2="16" y2="11" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="24" y1="8" x2="30" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
-            <line x1="8" y1="8" x2="2" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
-          </svg>
-          <img
-            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80"
-            alt="Food bowl"
-            className="rounded-full object-cover shadow-2xl"
-            style={{ width: "500px", height: "500px" }}
-          />
-        </div>
-
-        {/* ── CHAT CARD — on top of bowl, anchored to right ── */}
-        <div
-          className="absolute bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-          style={{ right: "80px", top: "50%", transform: "translateY(-50%)", width: "400px", zIndex: 20 }}
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-            <div className="flex items-center gap-2">
-              <button className="text-gray-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
-              </button>
-              <div className="flex -space-x-1.5">
-                {(["A", "B", "C", "D"] as const).map((l, i) => {
-                  const colors = ["bg-blue-200 text-blue-700", "bg-purple-200 text-purple-700", "bg-pink-200 text-pink-700", "bg-amber-200 text-amber-700"];
-                  return (
-                    <div key={l} className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold ${colors[i]}`}>
-                      {l}
-                    </div>
-                  );
-                })}
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-gray-800 leading-none">lunch crew</p>
-                <p className="text-[10px] text-gray-400 mt-0.5">4 members</p>
-              </div>
-            </div>
-            <button className="text-gray-400">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" /></svg>
-            </button>
-          </div>
-
-          {/* Messages */}
-          <div className="px-4 py-3 space-y-2">
-            <div className="flex justify-end">
-              <div>
-                <p className="text-[10px] text-gray-400 text-right mb-1">12:30 PM</p>
-                <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
-                  What are we feeling today?
-                </div>
-              </div>
-            </div>
-
-            {[
-              { user: "C", color: "bg-pink-200 text-pink-700", msg: "How about Sushi? 🍣", time: "12:31 PM" },
-              { user: "B", color: "bg-purple-200 text-purple-700", msg: "Works for me!", time: "12:32 PM" },
-              { user: "D", color: "bg-amber-200 text-amber-700", msg: "I'll add drinks", time: "12:33 PM" },
-            ].map((m) => (
-              <div key={m.time} className="flex items-end gap-2">
-                <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] font-bold ${m.color}`}>{m.user}</div>
-                <div>
-                  <div className="px-3 py-2 rounded-2xl rounded-bl-sm text-sm text-gray-800 bg-gray-100">{m.msg}</div>
-                  <p className="text-[10px] text-gray-400 mt-0.5">{m.time}</p>
-                </div>
+          {/* Dotted grid — top right */}
+          <div className="absolute top-3 right-3 pointer-events-none opacity-40" style={{ zIndex: 1 }}>
+            {Array.from({ length: 7 }).map((_, r) => (
+              <div key={r} className="flex gap-2.5 mb-2.5">
+                {Array.from({ length: 8 }).map((_, c) => (
+                  <div key={c} className="w-1.5 h-1.5 rounded-full" style={{ background: "#d4a0a0" }} />
+                ))}
               </div>
             ))}
+          </div>
 
-            <div className="flex justify-end">
-              <div>
-                <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
-                  Perfect, I&apos;ll place the order 🙌
+          {/* ── TEXT — pinned left ── */}
+          <div className="absolute" style={{ left: "80px", top: "50%", transform: "translateY(-50%)", width: "340px", zIndex: 10 }}>
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full mb-5 border" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+              Barnard &amp; Columbia only
+            </span>
+
+            <h1 className="font-black uppercase mb-4" style={{ fontSize: "3rem", color: "#1a1a0e", lineHeight: 1.05 }}>
+              ORDER FOOD TOGETHER,<br />
+              <span style={{ color: "#6b8f3e" }}>WITHOUT THE CHAOS</span>
+            </h1>
+
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "#666" }}>
+              Create a group, pick a restaurant, chat with your crew in real time, and place one order. No more 47-message group chats.
+            </p>
+
+            <div className="flex gap-3 mb-3">
+              <Link href="/signup" className="inline-flex items-center gap-2 px-5 py-2.5 text-white rounded-xl font-bold text-sm hover:opacity-90 shadow-md" style={{ background: "#5a7a2e" }}>
+                Get started free
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+              </Link>
+              <Link href="/login" className="inline-flex items-center justify-center px-5 py-2.5 border-2 border-gray-800 text-gray-800 rounded-xl text-sm font-bold hover:bg-gray-50 bg-white">
+                Sign in
+              </Link>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" style={{ color: "#e88080" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" /></svg>
+              <span className="text-xs" style={{ color: "#999" }}>Free to use for students</span>
+            </div>
+          </div>
+
+          {/* ── BOWL ── */}
+          {/* FIX: cleaner bowl image (overhead shot, no plate/napkin behind it) */}
+          <div className="absolute" style={{ left: "560px", top: "50%", transform: "translateY(-50%)", zIndex: 5 }}>
+            <svg className="absolute pointer-events-none" style={{ top: "30px", left: "30px", zIndex: 6 }} width="30" height="30" viewBox="0 0 32 32" fill="none">
+              <line x1="16" y1="2" x2="16" y2="11" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="24" y1="8" x2="30" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="8" y1="8" x2="2" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80"
+              alt="Food bowl"
+              className="rounded-full object-cover shadow-2xl"
+              style={{ width: "500px", height: "500px" }}
+            />
+          </div>
+
+          {/* ── CHAT CARD — anchored to right of 1440px box ── */}
+          <div
+            className="absolute bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+            style={{ right: "80px", top: "50%", transform: "translateY(-50%)", width: "400px", zIndex: 20 }}
+          >
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+              <div className="flex items-center gap-2">
+                <button className="text-gray-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+                </button>
+                <div className="flex -space-x-1.5">
+                  {(["A", "B", "C", "D"] as const).map((l, i) => {
+                    const colors = ["bg-blue-200 text-blue-700", "bg-purple-200 text-purple-700", "bg-pink-200 text-pink-700", "bg-amber-200 text-amber-700"];
+                    return (
+                      <div key={l} className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold ${colors[i]}`}>
+                        {l}
+                      </div>
+                    );
+                  })}
                 </div>
-                <p className="text-[10px] text-gray-400 text-right mt-0.5">12:34 PM</p>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800 leading-none">lunch crew</p>
+                  <p className="text-[10px] text-gray-400 mt-0.5">4 members</p>
+                </div>
               </div>
-            </div>
-
-            <div className="flex items-center gap-2 pt-1">
-              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#5a7a2e" }}>
-                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <span className="text-sm font-semibold" style={{ color: "#5a7a2e" }}>Order placed</span>
-              <span className="text-[10px] text-gray-400 ml-auto">12:45 PM</span>
-            </div>
-          </div>
-
-          {/* Input */}
-          <div className="px-4 pb-3">
-            <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-200">
               <button className="text-gray-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-              </button>
-              <span className="text-sm text-gray-400 flex-1">Message lunch crew...</span>
-              <button className="w-7 h-7 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: "#5a7a2e" }}>
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-                </svg>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" /></svg>
               </button>
             </div>
-          </div>
-        </div>
 
+            <div className="px-4 py-3 space-y-2">
+              <div className="flex justify-end">
+                <div>
+                  <p className="text-[10px] text-gray-400 text-right mb-1">12:30 PM</p>
+                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
+                    What are we feeling today?
+                  </div>
+                </div>
+              </div>
+
+              {[
+                { user: "C", color: "bg-pink-200 text-pink-700", msg: "How about Sushi? 🍣", time: "12:31 PM" },
+                { user: "B", color: "bg-purple-200 text-purple-700", msg: "Works for me!", time: "12:32 PM" },
+                { user: "D", color: "bg-amber-200 text-amber-700", msg: "I'll add drinks", time: "12:33 PM" },
+              ].map((m) => (
+                <div key={m.time} className="flex items-end gap-2">
+                  <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] font-bold ${m.color}`}>{m.user}</div>
+                  <div>
+                    <div className="px-3 py-2 rounded-2xl rounded-bl-sm text-sm text-gray-800 bg-gray-100">{m.msg}</div>
+                    <p className="text-[10px] text-gray-400 mt-0.5">{m.time}</p>
+                  </div>
+                </div>
+              ))}
+
+              <div className="flex justify-end">
+                <div>
+                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
+                    Perfect, I&apos;ll place the order 🙌
+                  </div>
+                  <p className="text-[10px] text-gray-400 text-right mt-0.5">12:34 PM</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 pt-1">
+                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#5a7a2e" }}>
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                </div>
+                <span className="text-sm font-semibold" style={{ color: "#5a7a2e" }}>Order placed</span>
+                <span className="text-[10px] text-gray-400 ml-auto">12:45 PM</span>
+              </div>
+            </div>
+
+            <div className="px-4 pb-3">
+              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-200">
+                <button className="text-gray-400">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                  </svg>
+                </button>
+                <span className="text-sm text-gray-400 flex-1">Message lunch crew...</span>
+                <button className="w-7 h-7 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: "#5a7a2e" }}>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* ── FEATURES ── */}
