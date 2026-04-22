@@ -19,8 +19,6 @@ export default function Home() {
         <div className="hidden md:flex items-center gap-8">
           <a href="#how-it-works" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">How it works</a>
           <a href="#features" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-          <a href="#campuses" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">For campuses</a>
-          <a href="#about" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">About</a>
         </div>
 
         <div className="flex gap-3">
