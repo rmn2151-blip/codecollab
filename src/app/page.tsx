@@ -83,8 +83,7 @@ export default function Home() {
               src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80"
               alt="Food bowl"
               className="rounded-full object-cover shadow-2xl"
-              style={{ width: "500px", height: "500px" }}
-            />
+              style={{ width: "500px", height: "500px", objectPosition: "35% center" }}            />
           </div>
 
           {/* ── CHAT CARD — anchored to right of 1440px box ── */}
@@ -121,7 +120,7 @@ export default function Home() {
               <div className="flex justify-end">
                 <div>
                   <p className="text-[10px] text-gray-400 text-right mb-1">12:30 PM</p>
-                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
+                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#007AFF" }}>
                     What are we feeling today?
                   </div>
                 </div>
@@ -143,7 +142,7 @@ export default function Home() {
 
               <div className="flex justify-end">
                 <div>
-                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#5a7a2e" }}>
+                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#007AFF" }}>
                     Perfect, I&apos;ll place the order 🙌
                   </div>
                   <p className="text-[10px] text-gray-400 text-right mt-0.5">12:34 PM</p>
