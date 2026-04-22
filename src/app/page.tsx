@@ -68,13 +68,6 @@ export default function Home() {
               className="absolute right-[10px] top-[20px] w-[390px] h-[390px] object-cover drop-shadow-2xl pointer-events-none z-10"
             />
 
-            {/* Lime slices — top left of bowl */}
-            <img
-              src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=200&auto=format&fit=crop&q=80"
-              alt=""
-              className="absolute left-[10px] top-[10px] w-[110px] h-[110px] object-cover drop-shadow-md pointer-events-none z-20"
-            />
-
             {/* Lunch crew badge */}
             <div className="absolute left-[60px] top-[50%] -translate-y-1/2 bg-white rounded-xl shadow-lg px-3 py-2 flex items-center gap-2.5 z-30 border border-gray-100">
               <div className="flex -space-x-2">
