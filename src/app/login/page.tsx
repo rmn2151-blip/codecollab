@@ -53,7 +53,7 @@ export default function LoginPage() {
       {/* ── LEFT PANEL ── */}
       <div className="hidden lg:flex w-[48%] relative overflow-hidden flex-col bg-[#dde1f5]">
 
-        {/* Decorative circles — top only, never over food */}
+        {/* Decorative circles — top only */}
         <div className="absolute top-[-80px] left-[-60px] w-72 h-72 rounded-full bg-[#c5caf0] opacity-60 pointer-events-none" />
         <div className="absolute top-[-40px] right-[-50px] w-56 h-56 rounded-full bg-[#c5caf0] opacity-50 pointer-events-none" />
 
@@ -84,11 +84,10 @@ export default function LoginPage() {
           <svg className="mt-4 ml-1" width="130" height="28" viewBox="0 0 130 28" fill="none">
             <path d="M4 18 Q18 6 32 18 Q46 30 60 18 Q74 6 88 18 Q102 30 116 18 Q124 12 130 14"
               stroke="#2563EB" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6"/>
-            <path d="M108 14 L122 10" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" opacity="0.5"/>
           </svg>
 
-          {/* Dashed connector + badge */}
-          <div className="relative mt-8 h-16">
+          {/* Dashed connector + people badge */}
+          <div className="relative mt-6 h-16">
             <svg className="absolute left-0 top-0 w-72 h-16" viewBox="0 0 288 64" fill="none">
               <path d="M 56 32 Q 140 0 250 38"
                 stroke="#6366f1" strokeWidth="1.5" strokeDasharray="6 4" fill="none" opacity="0.7"/>
@@ -102,43 +101,27 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* ── FOOD IMAGES ──
-          All positioned absolute relative to the left panel itself (overflow-hidden clips them).
-          
-          Layering (z-index):
-          - Main bowl (z-10): large, bleeds off bottom-left corner
-          - Lime (z-20): small accent, left edge above the main bowl  
-          - Guac bowl (z-20): right side upper cluster
-          - Chips bowl (z-20): right side, clips off bottom-right corner
-        */}
+        {/* ── FOOD IMAGES ── */}
 
-        {/* Main bowl — shifted right so it centers in the panel */}
+        {/* Main bowl — large, anchored to bottom-left, moved up */}
         <img
           src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute left-[30px] bottom-[-80px] w-[420px] h-[420px] rounded-full object-cover shadow-2xl border-[4px] border-white/30 pointer-events-none z-10"
+          className="absolute left-[-20px] bottom-[-40px] w-[380px] h-[380px] rounded-full object-cover shadow-2xl border-[4px] border-white/30 pointer-events-none z-10"
         />
 
-        {/* Lime — using a reliable solid green circle via CSS instead of broken URL */}
-        <div className="absolute left-[8px] bottom-[44%] w-[68px] h-[68px] rounded-full bg-[#84cc16] shadow-md border-[3px] border-white pointer-events-none z-20 flex items-center justify-center">
-          <div className="w-[44px] h-[44px] rounded-full bg-[#65a30d] flex items-center justify-center">
-            <div className="w-[20px] h-[1px] bg-[#84cc16] rotate-45 absolute" />
-            <div className="w-[20px] h-[1px] bg-[#84cc16] -rotate-45 absolute" />
-          </div>
-        </div>
-
-        {/* Guac bowl — right side, ~34% from bottom, upper cluster */}
+        {/* Drinks image — top right cluster, pulled down closer to main bowl */}
         <img
           src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=400&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute right-[48px] bottom-[33%] w-[148px] h-[148px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
+          className="absolute right-[40px] bottom-[42%] w-[140px] h-[140px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
         />
 
-        {/* Chips bowl — right side, bleeds off bottom edge */}
+        {/* Tacos image — right side, close to drinks, overlapping slightly */}
         <img
           src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=400&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute right-[18px] bottom-[-28px] w-[172px] h-[172px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
+          className="absolute right-[20px] bottom-[22%] w-[150px] h-[150px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
         />
       </div>
 
