@@ -51,15 +51,13 @@ export default function LoginPage() {
     <div className="min-h-screen flex">
 
       {/* ── LEFT PANEL ── */}
-      <div className="hidden lg:flex w-[52%] relative overflow-hidden flex-col bg-[#dde1f5]">
+      <div className="hidden lg:flex w-[48%] relative overflow-hidden flex-col bg-[#dde1f5]">
 
-        {/* Decorative background circles — top only, don't cover food */}
+        {/* Decorative circles — top only, never over food */}
         <div className="absolute top-[-80px] left-[-60px] w-72 h-72 rounded-full bg-[#c5caf0] opacity-60 pointer-events-none" />
         <div className="absolute top-[-40px] right-[-50px] w-56 h-56 rounded-full bg-[#c5caf0] opacity-50 pointer-events-none" />
-        {/* Soft mid circle — kept high so it doesn't sit on food */}
-        <div className="absolute top-[30%] left-[-80px] w-80 h-80 rounded-full bg-[#cdd2f0] opacity-30 pointer-events-none" />
 
-        {/* ── Text content (top z-layer) ── */}
+        {/* ── Text content ── */}
         <div className="relative z-10 flex flex-col p-10 pb-0">
           {/* Logo */}
           <div className="flex items-center gap-2">
@@ -82,7 +80,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Wavy scribble underline */}
+          {/* Wavy scribble */}
           <svg className="mt-4 ml-1" width="130" height="28" viewBox="0 0 130 28" fill="none">
             <path d="M4 18 Q18 6 32 18 Q46 30 60 18 Q74 6 88 18 Q102 30 116 18 Q124 12 130 14"
               stroke="#2563EB" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6"/>
@@ -96,7 +94,6 @@ export default function LoginPage() {
                 stroke="#6366f1" strokeWidth="1.5" strokeDasharray="6 4" fill="none" opacity="0.7"/>
               <circle cx="250" cy="38" r="6" fill="#3b82f6"/>
             </svg>
-            {/* People icon badge */}
             <div className="absolute left-0 top-1 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border border-blue-50">
               <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
@@ -105,44 +102,43 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* ── FOOD IMAGES — bottom of panel ── */}
-        {/*
-          Layout mirrors original:
-          - Main burrito bowl: large, bottom-left, partially clipped
-          - Guacamole bowl: top-right of food cluster
-          - Chips/tortilla bowl: bottom-right
-          - Lime slices: far left
+        {/* ── FOOD IMAGES ──
+          All positioned absolute relative to the left panel itself (overflow-hidden clips them).
+          
+          Layering (z-index):
+          - Main bowl (z-10): large, bleeds off bottom-left corner
+          - Lime (z-20): small accent, left edge above the main bowl  
+          - Guac bowl (z-20): right side upper cluster
+          - Chips bowl (z-20): right side, clips off bottom-right corner
         */}
-        <div className="absolute bottom-0 left-0 right-0 h-[52%] pointer-events-none">
 
-          {/* Lime slices — far left */}
-          <img
-            src="https://images.unsplash.com/photo-1590502160462-58b41354f588?w=200&auto=format&fit=crop&q=80"
-            alt="Lime slices"
-            className="absolute left-[-20px] bottom-[38%] w-20 h-20 rounded-full object-cover shadow-md border-2 border-white"
-          />
+        {/* Main bowl — 420px, anchored bottom-left, bleeds off left+bottom */}
+        <img
+          src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
+          alt=""
+          className="absolute left-[-60px] bottom-[-80px] w-[420px] h-[420px] rounded-full object-cover shadow-2xl border-[4px] border-white/30 pointer-events-none z-10"
+        />
 
-          {/* Main burrito bowl — large, bottom-left */}
-          <img
-            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&auto=format&fit=crop&q=80"
-            alt="Main food bowl"
-            className="absolute left-[-40px] bottom-[-60px] w-[340px] h-[340px] rounded-full object-cover shadow-2xl border-4 border-white/40"
-          />
+        {/* Lime — small, left edge, sits at ~45% from bottom, above main bowl */}
+        <img
+          src="https://images.unsplash.com/photo-1590502160462-58b41354f588?w=200&auto=format&fit=crop&q=80"
+          alt=""
+          className="absolute left-[-8px] bottom-[44%] w-[68px] h-[68px] rounded-full object-cover shadow-md border-[3px] border-white pointer-events-none z-20"
+        />
 
-          {/* Guacamole / green bowl — top right of cluster */}
-          <img
-            src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=300&auto=format&fit=crop&q=80"
-            alt="Guacamole bowl"
-            className="absolute right-[60px] bottom-[42%] w-[150px] h-[150px] rounded-full object-cover shadow-xl border-4 border-white/40"
-          />
+        {/* Guac bowl — right side, ~34% from bottom, upper cluster */}
+        <img
+          src="https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=400&auto=format&fit=crop&q=80"
+          alt=""
+          className="absolute right-[48px] bottom-[33%] w-[148px] h-[148px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
+        />
 
-          {/* Chips / side bowl — bottom right */}
-          <img
-            src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=300&auto=format&fit=crop&q=80"
-            alt="Tortilla chips"
-            className="absolute right-[30px] bottom-[-20px] w-[170px] h-[170px] rounded-full object-cover shadow-xl border-4 border-white/40"
-          />
-        </div>
+        {/* Chips bowl — right side, bleeds off bottom edge */}
+        <img
+          src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=400&auto=format&fit=crop&q=80"
+          alt=""
+          className="absolute right-[18px] bottom-[-28px] w-[172px] h-[172px] rounded-full object-cover shadow-xl border-[3px] border-white/60 pointer-events-none z-20"
+        />
       </div>
 
       {/* ── RIGHT PANEL — form ── */}
