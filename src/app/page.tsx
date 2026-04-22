@@ -2,87 +2,123 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: "#f5f0e8", fontFamily: "'Segoe UI', sans-serif" }}>
 
       {/* ── NAVBAR ── */}
       <nav className="flex justify-between items-center px-10 py-4 bg-white border-b border-gray-100">
         <div className="flex items-center gap-2">
-          <svg className="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <svg className="w-7 h-7" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
           </svg>
-          <span className="text-lg font-semibold text-gray-900">
-            Code<span className="text-blue-600">Collab</span>
+          <span className="text-lg font-bold text-gray-900">
+            Code<span style={{ color: "#6b8f3e" }}>Collab</span>
           </span>
         </div>
 
-
         <div className="flex gap-3">
-          <Link href="/login" className="px-4 py-2 text-sm border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors bg-white">
+          <Link href="/login" className="px-5 py-2 text-sm border-2 border-gray-800 rounded-full text-gray-800 hover:bg-gray-50 transition-colors bg-white font-semibold">
             Sign in
           </Link>
-          <Link href="/signup" className="px-4 py-2 text-sm bg-blue-700 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors">
+          <Link href="/signup" className="px-5 py-2 text-sm text-white rounded-full font-semibold hover:opacity-90 transition-colors" style={{ background: "#5a7a2e" }}>
             Get started
           </Link>
         </div>
       </nav>
 
       {/* ── HERO ── */}
-      <div className="relative overflow-hidden bg-[#f4f5fb]">
-        {/* Decorative circle top-right */}
-        <div className="absolute top-[-60px] right-[-40px] w-72 h-72 rounded-full bg-[#c5caf0] opacity-40 pointer-events-none" />
+      <div className="relative overflow-hidden" style={{ background: "#f5f0e8" }}>
+        {/* Dotted grid top-right */}
+        <div className="absolute top-4 right-4 pointer-events-none opacity-40">
+          {Array.from({ length: 6 }).map((_, row) => (
+            <div key={row} className="flex gap-3 mb-3">
+              {Array.from({ length: 7 }).map((_, col) => (
+                <div key={col} className="w-1.5 h-1.5 rounded-full" style={{ background: "#e8a0a0" }} />
+              ))}
+            </div>
+          ))}
+        </div>
 
-        <div className="max-w-6xl mx-auto px-10 py-16 flex items-center gap-12">
+        <div className="max-w-7xl mx-auto px-10 py-12 grid grid-cols-12 gap-4 items-center">
 
-          {/* LEFT — text */}
-          <div className="flex-1 min-w-0">
-            <span className="inline-flex items-center gap-1.5 bg-white text-blue-800 text-xs font-medium px-3 py-1 rounded-full mb-6 border border-blue-100 shadow-sm">
+          {/* LEFT — text (3 cols) */}
+          <div className="col-span-3 min-w-0">
+            <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full mb-6 border" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 3.741-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
               Barnard &amp; Columbia only
             </span>
-            <h1 className="text-5xl font-black text-gray-900 leading-tight tracking-tight mb-5">
-              Order food together,{" "}
-              <span className="text-blue-600 relative">
-                without the chaos
-                <svg className="absolute -bottom-2 left-0 w-full" height="6" viewBox="0 0 300 6" fill="none" preserveAspectRatio="none">
-                  <path d="M0 5 Q75 1 150 4 Q225 7 300 3" stroke="#818cf8" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-                </svg>
-              </span>
+
+            <h1 className="font-black leading-none tracking-tight mb-5 uppercase" style={{ fontSize: "3.2rem", color: "#1a1a0e", fontFamily: "'Georgia', serif", letterSpacing: "-0.01em" }}>
+              ORDER FOOD TOGETHER,{" "}
+              <span style={{ color: "#6b8f3e" }}>WITHOUT THE CHAOS</span>
             </h1>
-            <p className="text-base text-gray-500 leading-relaxed mb-2 max-w-md">
-              Create a group, pick a restaurant, chat with your crew in real time,
-              and place one order. No more 47-message group chats.
+
+            <p className="text-sm leading-relaxed mb-8" style={{ color: "#555" }}>
+              Create a group, pick a restaurant, chat with your crew in real time, and place one order. No more 47-message group chats.
             </p>
-            <div className="flex gap-3 mt-8">
-              <Link href="/signup" className="inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold text-sm hover:bg-blue-800 transition-colors shadow-md shadow-blue-200">
+
+            <div className="flex flex-col gap-3">
+              <Link href="/signup" className="inline-flex items-center gap-2 px-6 py-3 text-white rounded-xl font-bold text-sm hover:opacity-90 transition-colors shadow-md" style={{ background: "#5a7a2e" }}>
                 Get started free
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </Link>
-              <Link href="/login" className="px-6 py-3 border border-gray-200 text-gray-700 rounded-lg text-sm hover:bg-gray-50 transition-colors bg-white">
+              <Link href="/login" className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-800 text-gray-800 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors bg-white">
                 Sign in
               </Link>
             </div>
+
             <div className="flex items-center gap-1.5 mt-4">
-              <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <svg className="w-4 h-4" style={{ color: "#e88080" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
               </svg>
-              <span className="text-xs text-gray-400">Free to use for students</span>
+              <span className="text-xs" style={{ color: "#888" }}>Free to use for students</span>
             </div>
           </div>
 
-          {/* RIGHT — Chat UI mockup */}
-          <div className="relative flex-shrink-0 w-[480px]">
-            {/* Decorative dashed arc */}
-            <div className="absolute right-[-30px] top-[10%] w-[160px] h-[300px] rounded-r-full border-2 border-dashed border-indigo-300 opacity-50 pointer-events-none" />
+          {/* CENTER — food bowl (5 cols) */}
+          <div className="col-span-5 flex items-center justify-center relative">
+            {/* Large soft circle behind bowl */}
+            <div className="absolute w-[420px] h-[420px] rounded-full pointer-events-none" style={{ background: "#f0c8b0", opacity: 0.5 }} />
+            {/* Spark accents */}
+            <svg className="absolute top-4 left-16 w-10 h-10 pointer-events-none" viewBox="0 0 40 40" fill="none">
+              <line x1="20" y1="4" x2="20" y2="14" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="30" y1="12" x2="37" y2="5" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+              <line x1="10" y1="12" x2="3" y2="5" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+            </svg>
+            <img
+              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80"
+              alt="Food bowl"
+              className="relative z-10 rounded-full object-cover shadow-2xl"
+              style={{ width: "360px", height: "360px" }}
+            />
+          </div>
+
+          {/* RIGHT — Chat UI (4 cols) */}
+          <div className="col-span-4 relative">
+            {/* Dotted grid behind card */}
+            <div className="absolute right-0 top-0 pointer-events-none opacity-30">
+              {Array.from({ length: 8 }).map((_, row) => (
+                <div key={row} className="flex gap-3 mb-3">
+                  {Array.from({ length: 5 }).map((_, col) => (
+                    <div key={col} className="w-1.5 h-1.5 rounded-full" style={{ background: "#e8a0a0" }} />
+                  ))}
+                </div>
+              ))}
+            </div>
 
             {/* Chat card */}
             <div className="relative z-10 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
               {/* Chat header */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
                 <div className="flex items-center gap-2">
+                  <button className="text-gray-400 hover:text-gray-600 mr-1">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>
+                  </button>
                   <div className="flex -space-x-1.5">
                     {["A","B","C","D"].map((l, i) => {
                       const colors = ["bg-blue-200 text-blue-700","bg-purple-200 text-purple-700","bg-pink-200 text-pink-700","bg-amber-200 text-amber-700"];
@@ -103,118 +139,136 @@ export default function Home() {
                 </button>
               </div>
 
-              {/* Chat messages */}
-              <div className="px-4 py-3 space-y-3">
+              {/* Messages — bubble style */}
+              <div className="px-4 py-3 space-y-2">
+                {/* Sent bubble (right) */}
+                <div className="flex justify-end">
+                  <div>
+                    <p className="text-[10px] text-gray-400 text-right mb-1">12:30 PM</p>
+                    <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white max-w-[180px]" style={{ background: "#5a7a2e" }}>
+                      What are we feeling today?
+                    </div>
+                  </div>
+                </div>
+
+                {/* Received bubbles */}
                 {[
-                  { user: "A", color: "bg-blue-200 text-blue-700", msg: "What are we feeling today?", time: "12:30 PM" },
-                  { user: "C", color: "bg-pink-200 text-pink-700", msg: "How about Sushi?", time: "12:31 PM" },
-                  { user: "B", color: "bg-purple-200 text-purple-700", msg: "Works for me! 🍣", time: "12:32 PM" },
+                  { user: "C", color: "bg-pink-200 text-pink-700", msg: "How about Sushi? 🍣", time: "12:31 PM" },
+                  { user: "B", color: "bg-purple-200 text-purple-700", msg: "Works for me!", time: "12:32 PM" },
                   { user: "D", color: "bg-amber-200 text-amber-700", msg: "I'll add drinks", time: "12:33 PM" },
                 ].map((m) => (
-                  <div key={m.time} className="flex items-center gap-2.5">
+                  <div key={m.time} className="flex items-end gap-2">
                     <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] font-bold ${m.color}`}>{m.user}</div>
-                    <span className="text-sm text-gray-800 flex-1">{m.msg}</span>
-                    <span className="text-[10px] text-gray-400 flex-shrink-0">{m.time}</span>
+                    <div>
+                      <div className="px-3 py-2 rounded-2xl rounded-bl-sm text-sm text-gray-800 bg-gray-100 max-w-[180px]">
+                        {m.msg}
+                      </div>
+                      <p className="text-[10px] text-gray-400 mt-0.5">{m.time}</p>
+                    </div>
                   </div>
                 ))}
-              </div>
 
-              {/* Order placed */}
-              <div className="mx-4 mb-4 mt-1 bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between border border-gray-100">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                {/* Sent bubble */}
+                <div className="flex justify-end">
+                  <div>
+                    <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white max-w-[190px]" style={{ background: "#5a7a2e" }}>
+                      Perfect, I'll place the order 🙌
+                    </div>
+                    <p className="text-[10px] text-gray-400 text-right mt-0.5">12:34 PM</p>
+                  </div>
+                </div>
+
+                {/* Order placed row */}
+                <div className="flex items-center gap-2 pt-1 pb-0.5">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#5a7a2e" }}>
+                    <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
                   </div>
-                  <span className="text-sm font-semibold text-gray-800">Order placed</span>
+                  <span className="text-sm font-semibold" style={{ color: "#5a7a2e" }}>Order placed</span>
+                  <span className="text-[10px] text-gray-400 ml-auto">12:45 PM</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-gray-400">12:45 PM</span>
-                  {/* Spark */}
-                  <svg className="w-5 h-5 text-blue-400" viewBox="0 0 20 20" fill="none">
-                    <line x1="10" y1="2" x2="10" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="15" y1="5" x2="18" y2="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    <line x1="5" y1="5" x2="2" y2="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
+              </div>
+
+              {/* Message input */}
+              <div className="px-4 pb-3">
+                <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-200">
+                  <button className="text-gray-400 hover:text-gray-600">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+                  <span className="text-sm text-gray-400 flex-1">Message lunch crew...</span>
+                  <button className="w-7 h-7 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: "#5a7a2e" }}>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
-
-            {/* Pink squiggle accent */}
-            <svg className="absolute bottom-[-20px] left-[20px] w-16 h-8 opacity-70 pointer-events-none" viewBox="0 0 64 24" fill="none">
-              <path d="M4 18 Q16 6 28 14 Q40 22 52 10 Q58 4 62 8" stroke="#f472b6" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-            </svg>
           </div>
         </div>
       </div>
 
       {/* ── FEATURES ── */}
-      <div id="features" className="max-w-5xl mx-auto px-10 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 text-center mb-2">
-          Everything you need for{" "}
-          <span className="text-blue-600 relative">
-            stress-free
-            <svg className="absolute -bottom-1 left-0 w-full" height="4" viewBox="0 0 100 4" fill="none" preserveAspectRatio="none">
-              <path d="M0 3 Q25 1 50 3 Q75 5 100 2" stroke="#818cf8" strokeWidth="2" fill="none" strokeLinecap="round"/>
-            </svg>
-          </span>{" "}
-          group ordering
+      <div id="features" className="max-w-5xl mx-auto px-10 py-14">
+        <h2 className="text-center font-black uppercase mb-10 tracking-wide" style={{ fontSize: "1.3rem", color: "#1a1a0e", letterSpacing: "0.05em" }}>
+          EVERYTHING YOU NEED FOR{" "}
+          <span style={{ color: "#e8834a" }}>STRESS-FREE</span>{" "}
+          GROUP ORDERING
         </h2>
-        <div className="grid grid-cols-4 gap-4 mt-10">
+        <div className="grid grid-cols-4 gap-4">
           {[
             {
-              color: "bg-blue-50",
+              bgIcon: "#eef3e6",
               icon: (
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-6 h-6" style={{ color: "#5a7a2e" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                 </svg>
               ),
-              accent: "bg-blue-600",
-              title: "Group ordering",
+              title: "GROUP ORDERING",
               desc: "Create or join groups by restaurant. Set a member cap and order deadline.",
             },
             {
-              color: "bg-indigo-50",
+              bgIcon: "#fdf0e8",
               icon: (
-                <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-6 h-6" style={{ color: "#e8834a" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                 </svg>
               ),
-              accent: "bg-indigo-600",
-              title: "Real-time chat",
+              title: "REAL-TIME CHAT",
               desc: "Decide together what to order live. No delays, no back-and-forth texting.",
             },
             {
-              color: "bg-pink-50",
+              bgIcon: "#fde8ee",
               icon: (
-                <svg className="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-6 h-6" style={{ color: "#e8507a" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
                 </svg>
               ),
-              accent: "bg-pink-500",
-              title: "Dietary filters",
+              title: "DIETARY FILTERS",
               desc: "Filter groups by dietary restrictions, flex dollars, and time remaining.",
             },
             {
-              color: "bg-emerald-50",
+              bgIcon: "#fef3e2",
               icon: (
-                <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-6 h-6" style={{ color: "#d4a020" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
                 </svg>
               ),
-              accent: "bg-emerald-500",
-              title: "One easy payment",
+              title: "ONE EASY PAYMENT",
               desc: "Place one order and pay together. No more splitting headaches.",
             },
           ].map((card) => (
-            <div key={card.title} className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-              <div className={`w-12 h-12 ${card.color} rounded-xl flex items-center justify-center mb-4`}>
-                {card.icon}
+            <div key={card.title} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: card.bgIcon }}>
+                  {card.icon}
+                </div>
+                <h3 className="text-sm font-black uppercase tracking-wide" style={{ color: "#1a1a0e" }}>{card.title}</h3>
               </div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">{card.title}</h3>
-              <div className={`w-6 h-0.5 ${card.accent} rounded mb-3`} />
-              <p className="text-sm text-gray-500 leading-relaxed">{card.desc}</p>
+              <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{card.desc}</p>
             </div>
           ))}
         </div>
@@ -226,129 +280,127 @@ export default function Home() {
       </div>
 
       {/* ── HOW IT WORKS ── */}
-      <div id="how-it-works" className="max-w-4xl mx-auto text-center px-10 py-14">
-        <h2 className="text-2xl font-bold text-gray-900 mb-12">
-          How it works
-          <svg className="mx-auto mt-1" width="60" height="4" viewBox="0 0 60 4" fill="none">
-            <path d="M0 2 Q15 0 30 2 Q45 4 60 2" stroke="#818cf8" strokeWidth="2" fill="none" strokeLinecap="round"/>
-          </svg>
+      <div id="how-it-works" className="max-w-5xl mx-auto px-10 py-14">
+        <h2 className="text-center font-black uppercase mb-10 tracking-wide" style={{ fontSize: "1.3rem", color: "#1a1a0e", letterSpacing: "0.05em" }}>
+          HOW IT WORKS
         </h2>
-        <div className="grid grid-cols-3 gap-10 relative">
-          {/* Connecting dashed line */}
-          <div className="absolute top-[30px] left-[22%] right-[22%] flex items-center pointer-events-none z-0">
+        <div className="grid grid-cols-3 gap-6 relative">
+          {/* Dashed lines between steps */}
+          <div className="absolute top-[28px] left-[36%] right-[36%] pointer-events-none z-0 flex items-center gap-1">
             <div className="flex-1 border-t-2 border-dashed border-gray-300" />
           </div>
 
           {[
             {
               num: "1",
+              numBg: "#5a7a2e",
               icon: (
-                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-7 h-7" style={{ color: "#5a7a2e" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
                 </svg>
               ),
-              title: "Create or join a group",
+              iconBg: "#eef3e6",
+              title: "CREATE OR JOIN A GROUP",
               desc: "Use your .edu email to get started.",
             },
             {
               num: "2",
+              numBg: "#e8834a",
               icon: (
-                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                <svg className="w-7 h-7" style={{ color: "#e8834a" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                 </svg>
               ),
-              title: "Chat & decide",
+              iconBg: "#fdf0e8",
+              title: "CHAT & DECIDE",
               desc: "Vote, chat, and lock in on a place to eat.",
             },
             {
               num: "3",
+              numBg: "#e8507a",
               icon: (
-                <svg className="w-6 h-6 text-blue-700" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                <svg className="w-7 h-7" style={{ color: "#e8507a" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                 </svg>
               ),
-              title: "Order & enjoy",
+              iconBg: "#fde8ee",
+              title: "ORDER & ENJOY",
               desc: "Place the order and the leader pays. You enjoy.",
             },
           ].map((step) => (
-            <div key={step.num} className="flex flex-col items-center relative z-10">
-              {/* Number badge */}
-              <div className="relative mb-4">
-                <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center">
+            <div key={step.num} className="flex items-start gap-4 relative z-10 bg-white rounded-2xl p-5 border border-gray-100 shadow-sm">
+              {/* Number + icon stack */}
+              <div className="relative flex-shrink-0">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: step.iconBg }}>
                   {step.icon}
                 </div>
-                <div className="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-blue-700 text-white text-[10px] font-bold flex items-center justify-center shadow">
+                <div className="absolute -top-1 -left-1 w-5 h-5 rounded-full text-white text-[10px] font-black flex items-center justify-center shadow" style={{ background: step.numBg }}>
                   {step.num}
                 </div>
               </div>
-              <h4 className="text-sm font-semibold text-gray-900 mb-1">{step.title}</h4>
-              <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+              <div>
+                <h4 className="text-xs font-black uppercase tracking-wide mb-1" style={{ color: "#1a1a0e" }}>{step.title}</h4>
+                <p className="text-sm leading-relaxed" style={{ color: "#666" }}>{step.desc}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ── CTA BAR ── */}
-      <div className="relative overflow-hidden bg-[#eef0fb] border-t border-blue-100 py-16 px-8">
-        {/* Paper plane illustration */}
-        <div className="absolute left-8 bottom-0 pointer-events-none">
-          <svg width="140" height="120" viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Sun/circle */}
-            <circle cx="40" cy="85" r="32" fill="#FDE68A" opacity="0.9"/>
-            {/* Paper plane */}
-            <g transform="translate(30, 20) rotate(-20, 40, 40)">
-              <path d="M10 40 L80 10 L55 70 Z" fill="#6366f1" opacity="0.9"/>
-              <path d="M10 40 L55 70 L40 50 Z" fill="#4f46e5" opacity="0.8"/>
-              <path d="M40 50 L55 70 L65 55 Z" fill="#818cf8" opacity="0.7"/>
+      <div className="relative overflow-hidden border-t py-16 px-8" style={{ background: "#eef3e2", borderColor: "#d4e4b0" }}>
+        {/* Paper plane */}
+        <div className="absolute left-10 bottom-0 pointer-events-none">
+          <svg width="150" height="130" viewBox="0 0 150 130" fill="none">
+            <circle cx="45" cy="95" r="36" fill="#FDE68A" opacity="0.85"/>
+            <g transform="translate(35, 18) rotate(-25, 40, 45)">
+              <path d="M8 42 L82 8 L58 72 Z" fill="#5a7a2e" opacity="0.92"/>
+              <path d="M8 42 L58 72 L42 52 Z" fill="#3d5a1e" opacity="0.85"/>
+              <path d="M42 52 L58 72 L68 57 Z" fill="#8ab04e" opacity="0.75"/>
             </g>
-            {/* Dashed trail */}
-            <path d="M20 90 Q50 60 90 30" stroke="#6366f1" strokeWidth="1.5" strokeDasharray="5 4" opacity="0.4" fill="none"/>
+            <path d="M18 95 Q52 62 94 32" stroke="#5a7a2e" strokeWidth="1.5" strokeDasharray="5 4" opacity="0.35" fill="none"/>
           </svg>
         </div>
 
-        {/* Spark accents right */}
-        <svg className="absolute right-[180px] top-[28px] w-12 h-12 opacity-50 pointer-events-none" viewBox="0 0 48 48" fill="none">
-          <line x1="24" y1="6" x2="24" y2="16" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
-          <line x1="36" y1="14" x2="44" y2="6" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
-          <line x1="12" y1="14" x2="4" y2="6" stroke="#3b82f6" strokeWidth="2.5" strokeLinecap="round"/>
-        </svg>
-        <svg className="absolute right-[60px] bottom-[40px] w-8 h-8 opacity-40 pointer-events-none" viewBox="0 0 32 32" fill="none">
-          <line x1="16" y1="4" x2="16" y2="11" stroke="#6366f1" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="24" y1="8" x2="29" y2="3" stroke="#6366f1" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="8" y1="8" x2="3" y2="3" stroke="#6366f1" strokeWidth="2" strokeLinecap="round"/>
+        {/* Spark accents */}
+        <svg className="absolute right-[200px] top-[24px] w-10 h-10 opacity-50 pointer-events-none" viewBox="0 0 40 40" fill="none">
+          <line x1="20" y1="4" x2="20" y2="13" stroke="#5a7a2e" strokeWidth="2.5" strokeLinecap="round"/>
+          <line x1="30" y1="10" x2="37" y2="3" stroke="#5a7a2e" strokeWidth="2.5" strokeLinecap="round"/>
+          <line x1="10" y1="10" x2="3" y2="3" stroke="#5a7a2e" strokeWidth="2.5" strokeLinecap="round"/>
         </svg>
 
-        {/* Dotted grid right side */}
-        <div className="absolute right-8 bottom-4 pointer-events-none opacity-30">
-          {Array.from({length: 5}).map((_, row) => (
+        {/* Dotted grid right */}
+        <div className="absolute right-8 bottom-4 pointer-events-none opacity-25">
+          {Array.from({ length: 5 }).map((_, row) => (
             <div key={row} className="flex gap-3 mb-3">
-              {Array.from({length: 6}).map((_, col) => (
-                <div key={col} className="w-1 h-1 rounded-full bg-blue-400" />
+              {Array.from({ length: 7 }).map((_, col) => (
+                <div key={col} className="w-1.5 h-1.5 rounded-full" style={{ background: "#5a7a2e" }} />
               ))}
             </div>
           ))}
         </div>
 
         <div className="relative z-10 text-center">
-          <p className="text-2xl font-bold text-gray-900 mb-1">
+          <p className="font-black mb-1 uppercase tracking-wide" style={{ fontSize: "1.6rem", color: "#1a1a0e" }}>
             Ready to order smarter with{" "}
-            <span className="text-blue-600">your crew?</span>
+            <span style={{ color: "#6b8f3e" }}>your crew?</span>
           </p>
-          <p className="text-sm text-gray-500 mb-6 mt-1">Only for Barnard &amp; Columbia students</p>
+          <p className="text-sm mb-7 mt-1" style={{ color: "#777" }}>Only for Barnard &amp; Columbia students</p>
           <Link
             href="/signup"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-blue-700 text-white rounded-lg font-semibold text-sm hover:bg-blue-800 transition-colors shadow-md shadow-blue-200"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-white rounded-xl font-bold text-sm hover:opacity-90 transition-colors shadow-md"
+            style={{ background: "#5a7a2e" }}
           >
             Create your account
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
           </Link>
           <div className="flex items-center justify-center gap-1.5 mt-4">
-            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+            <svg className="w-4 h-4" style={{ color: "#999" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
             </svg>
-            <span className="text-xs text-gray-400">Only for Barnard and Columbia students</span>
+            <span className="text-xs" style={{ color: "#999" }}>Only for Barnard and Columbia students</span>
           </div>
         </div>
       </div>
