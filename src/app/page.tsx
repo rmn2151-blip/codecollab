@@ -77,7 +77,7 @@ export default function Home() {
 
         {/* ── BOWL — centered-right, behind card ── */}
         {/* Positioned so its center is around x=680, vertically centered */}
-        <div className="absolute" style={{ left: "390px", top: "50%", transform: "translateY(-50%)", zIndex: 5 }}>
+        <div className="absolute" style={{ left: "500px", top: "50%", transform: "translateY(-50%)", zIndex: 5 }}>
           {/* Pink spark */}
           <svg className="absolute pointer-events-none" style={{ top: "30px", left: "30px", zIndex: 6 }} width="30" height="30" viewBox="0 0 32 32" fill="none">
             <line x1="16" y1="2" x2="16" y2="11" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
