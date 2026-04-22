@@ -100,7 +100,7 @@ export default function SignupPage() {
       <div className="flex-1 flex min-h-0">
 
         {/* ── LEFT PANEL ── */}
-        <div className="w-[520px] flex-shrink-0 flex flex-col justify-start pt-10 px-12 pb-8 relative overflow-hidden">
+        <div className="w-[600px] flex-shrink-0 flex flex-col justify-start pt-10 px-12 pb-8 relative overflow-hidden">
 
           {/* Badge */}
           <span className="inline-flex items-center gap-1.5 bg-white text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full border border-blue-100 shadow-sm mb-6 self-start">
@@ -135,38 +135,38 @@ export default function SignupPage() {
             </svg>
 
             {/* ── PHONE / CARD MOCKUP ── */}
-            <div className="relative w-[280px]">
+            <div className="relative w-[420px]">
               {/* White card with rounded corners mimicking a phone screen */}
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 px-4 pt-5 pb-6 overflow-hidden">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 px-6 pt-5 pb-7 overflow-hidden">
 
                 {/* Tiny top bar like a phone notch row */}
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-5">
                   <div className="w-16 h-1 rounded-full bg-gray-200" />
                 </div>
 
                 {/* Messages */}
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-4">
                   {/* Message A */}
-                  <div className="flex items-start gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-blue-200 flex items-center justify-center text-[11px] font-bold text-blue-700 flex-shrink-0">A</div>
-                    <div className="bg-blue-500 text-white text-xs px-3.5 py-2.5 rounded-2xl rounded-tl-sm shadow-sm leading-snug max-w-[160px]">
-                      What are we feeling today?
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-full bg-blue-200 flex items-center justify-center text-xs font-bold text-blue-700 flex-shrink-0">A</div>
+                    <div className="bg-blue-500 text-white text-sm px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm leading-snug">
+                      I&apos;ll pay this time, just Zelle me
                     </div>
                   </div>
 
                   {/* Message B */}
-                  <div className="flex items-center gap-2.5 ml-3">
-                    <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-[11px] font-bold text-purple-600 flex-shrink-0">B</div>
-                    <div className="bg-gray-50 text-gray-800 text-xs px-3.5 py-2.5 rounded-2xl shadow-sm border border-gray-100">
-                      How about sushi? 🍣
+                  <div className="flex items-center gap-3 ml-3">
+                    <div className="w-9 h-9 rounded-full bg-purple-100 flex items-center justify-center text-xs font-bold text-purple-600 flex-shrink-0">B</div>
+                    <div className="bg-gray-50 text-gray-800 text-sm px-4 py-3 rounded-2xl shadow-sm border border-gray-100">
+                      Sounds good, Zelling you now! 👍
                     </div>
                   </div>
 
                   {/* Message C */}
-                  <div className="flex items-start gap-2.5 ml-1">
-                    <div className="w-8 h-8 rounded-full bg-pink-200 flex items-center justify-center text-[11px] font-bold text-pink-600 flex-shrink-0">C</div>
-                    <div className="bg-purple-500 text-white text-xs px-3.5 py-2.5 rounded-2xl rounded-tl-sm shadow-sm">
-                      Works for me! 🎉
+                  <div className="flex items-start gap-3 ml-1">
+                    <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center text-xs font-bold text-pink-600 flex-shrink-0">C</div>
+                    <div className="bg-purple-500 text-white text-sm px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm">
+                      Same, just sent it! 🙌
                     </div>
                   </div>
                 </div>
