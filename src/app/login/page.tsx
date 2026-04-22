@@ -112,19 +112,20 @@ export default function LoginPage() {
           - Chips bowl (z-20): right side, clips off bottom-right corner
         */}
 
-        {/* Main bowl — 420px, anchored bottom-left, bleeds off left+bottom */}
+        {/* Main bowl — shifted right so it centers in the panel */}
         <img
           src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute left-[-60px] bottom-[-80px] w-[420px] h-[420px] rounded-full object-cover shadow-2xl border-[4px] border-white/30 pointer-events-none z-10"
+          className="absolute left-[30px] bottom-[-80px] w-[420px] h-[420px] rounded-full object-cover shadow-2xl border-[4px] border-white/30 pointer-events-none z-10"
         />
 
-        {/* Lime — small, left edge, sits at ~45% from bottom, above main bowl */}
-        <img
-          src="https://images.unsplash.com/photo-1590502160462-58b41354f588?w=200&auto=format&fit=crop&q=80"
-          alt=""
-          className="absolute left-[-8px] bottom-[44%] w-[68px] h-[68px] rounded-full object-cover shadow-md border-[3px] border-white pointer-events-none z-20"
-        />
+        {/* Lime — using a reliable solid green circle via CSS instead of broken URL */}
+        <div className="absolute left-[8px] bottom-[44%] w-[68px] h-[68px] rounded-full bg-[#84cc16] shadow-md border-[3px] border-white pointer-events-none z-20 flex items-center justify-center">
+          <div className="w-[44px] h-[44px] rounded-full bg-[#65a30d] flex items-center justify-center">
+            <div className="w-[20px] h-[1px] bg-[#84cc16] rotate-45 absolute" />
+            <div className="w-[20px] h-[1px] bg-[#84cc16] -rotate-45 absolute" />
+          </div>
+        </div>
 
         {/* Guac bowl — right side, ~34% from bottom, upper cluster */}
         <img
