@@ -65,14 +65,14 @@ export default function Home() {
             <img
               src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
               alt="Food bowl"
-              className="absolute right-[10px] top-[20px] w-[390px] h-[390px] object-contain drop-shadow-2xl pointer-events-none z-10"
+              className="absolute right-[10px] top-[20px] w-[390px] h-[390px] object-cover drop-shadow-2xl pointer-events-none z-10"
             />
 
             {/* Lime slices — top left of bowl */}
             <img
               src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=200&auto=format&fit=crop&q=80"
               alt=""
-              className="absolute left-[10px] top-[10px] w-[110px] h-[110px] object-contain drop-shadow-md pointer-events-none z-20"
+              className="absolute left-[10px] top-[10px] w-[110px] h-[110px] object-cover drop-shadow-md pointer-events-none z-20"
             />
 
             {/* Lunch crew badge */}
@@ -177,12 +177,12 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute left-[-20px] bottom-[-30px] w-[220px] h-[220px] object-contain opacity-90 pointer-events-none"
+          className="absolute left-[-20px] bottom-[-30px] w-[220px] h-[220px] object-cover opacity-90 pointer-events-none"
         />
         <img
           src="https://images.unsplash.com/photo-1548940740-204726a19be3?w=300&auto=format&fit=crop&q=80"
           alt=""
-          className="absolute right-[-10px] bottom-[-20px] w-[180px] h-[180px] object-contain opacity-90 pointer-events-none"
+          className="absolute right-[-10px] bottom-[-20px] w-[180px] h-[180px] object-cover opacity-90 pointer-events-none"
         />
         {/* Spark accents */}
         <svg className="absolute left-[200px] bottom-[60px] w-12 h-12 opacity-60 pointer-events-none" viewBox="0 0 48 48" fill="none">
