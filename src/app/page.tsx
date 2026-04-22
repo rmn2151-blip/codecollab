@@ -63,10 +63,9 @@ export default function Home() {
 
             {/* Main burrito bowl */}
             <img
-              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80"
+              src=""/images/bowl.png""
               alt="Food bowl"
-              className="absolute right-[10px] top-[20px] w-[390px] h-[390px] object-cover drop-shadow-2xl pointer-events-none z-10"
-            />
+              className="absolute right-[10px] top-[20px] w-[390px] h-[390px] object-contain pointer-events-none z-10"            />
 
             {/* Lunch crew badge */}
             <div className="absolute left-[60px] top-[50%] -translate-y-1/2 bg-white rounded-xl shadow-lg px-3 py-2 flex items-center gap-2.5 z-30 border border-gray-100">
