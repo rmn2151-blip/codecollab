@@ -130,11 +130,11 @@ export default function Home() {
 <div
   className="absolute rounded-full overflow-hidden shadow-xl border border-white"
   style={{
-    width: "130px",
-    height: "130px",
+    width: "160px",
+    height: "160px",
     left: "40px",
     top: "30px",
-    zIndex: 7,
+    zIndex: 4,
   }}
 >
   <img
@@ -161,99 +161,115 @@ export default function Home() {
           </div>
 
           {/* ── CHAT CARD — anchored to right of 1440px box ── */}
-          <div
-            className="absolute bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-            style={{ right: "80px", top: "50%", transform: "translateY(-50%)", width: "400px", zIndex: 20 }}
-          >
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-              <div className="flex items-center gap-2">
-                <button className="text-gray-400">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
-                </button>
-                <div className="flex -space-x-1.5">
-                  {(["A", "B", "C", "D"] as const).map((l, i) => {
-                    const colors = ["bg-blue-200 text-blue-700", "bg-purple-200 text-purple-700", "bg-pink-200 text-pink-700", "bg-amber-200 text-amber-700"];
-                    return (
-                      <div key={l} className={`w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold ${colors[i]}`}>
-                        {l}
-                      </div>
-                    );
-                  })}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-800 leading-none">lunch crew</p>
-                  <p className="text-[10px] text-gray-400 mt-0.5">4 members</p>
-                </div>
-              </div>
-              <button className="text-gray-400">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" /></svg>
-              </button>
-            </div>
+{/* ── CHAT CARD ── */}
+<div
+  className="absolute bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
+  style={{ right: "80px", top: "50%", transform: "translateY(-50%)", width: "320px", zIndex: 20 }}
+>
+  {/* Header */}
+  <div className="flex items-center gap-2.5 px-4 py-3 border-b border-gray-100 bg-gray-50">
+    <button className="text-gray-400 mr-1">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+    </button>
+    {/* Stacked small avatars */}
+    <div className="flex -space-x-2">
+      {[
+        { l: "A", bg: "#d4e4ff", fg: "#3b6fd4" },
+        { l: "B", bg: "#e9d4ff", fg: "#7c3bd4" },
+        { l: "C", bg: "#ffd4e8", fg: "#d43b7c" },
+        { l: "D", bg: "#ffecd4", fg: "#d47c3b" },
+      ].map((a) => (
+        <div key={a.l} className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[9px] font-bold flex-shrink-0" style={{ background: a.bg, color: a.fg }}>{a.l}</div>
+      ))}
+    </div>
+    <div className="flex-1 min-w-0">
+      <p className="text-[13px] font-semibold text-gray-900 leading-none">lunch crew</p>
+      <p className="text-[10px] text-gray-400 mt-0.5">4 members · iMessage</p>
+    </div>
+    <button className="text-gray-400">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" /></svg>
+    </button>
+  </div>
 
-            <div className="px-4 py-3 space-y-2">
-              <div className="flex justify-end">
-                <div>
-                  <p className="text-[10px] text-gray-400 text-right mb-1">12:30 PM</p>
-                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#007AFF" }}>
-                    What are we feeling today?
-                  </div>
-                </div>
-              </div>
+  {/* Messages */}
+  <div className="px-3 py-3 space-y-1" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
+    
+    {/* Timestamp */}
+    <p className="text-center text-[10px] text-gray-400 py-1">Today 12:30 PM</p>
 
-              {[
-                { user: "C", color: "bg-pink-200 text-pink-700", msg: "How about Sushi? 🍣", time: "12:31 PM" },
-                { user: "B", color: "bg-purple-200 text-purple-700", msg: "Works for me!", time: "12:32 PM" },
-                { user: "D", color: "bg-amber-200 text-amber-700", msg: "I'll add drinks", time: "12:33 PM" },
-              ].map((m) => (
-                <div key={m.time} className="flex items-end gap-2">
-                  <div className={`w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[10px] font-bold ${m.color}`}>{m.user}</div>
-                  <div>
-                    <div className="px-3 py-2 rounded-2xl rounded-bl-sm text-sm text-gray-800 bg-gray-100">{m.msg}</div>
-                    <p className="text-[10px] text-gray-400 mt-0.5">{m.time}</p>
-                  </div>
-                </div>
-              ))}
+    {/* Me */}
+    <div className="flex justify-end mb-1">
+      <div className="px-3 py-1.5 rounded-[18px] rounded-tr-[4px] text-[13px] text-white max-w-[75%]" style={{ background: "#007AFF" }}>
+        What are we feeling today?
+      </div>
+    </div>
 
-              <div className="flex justify-end">
-                <div>
-                  <div className="px-3 py-2 rounded-2xl rounded-tr-sm text-sm text-white" style={{ background: "#007AFF" }}>
-                    Perfect, I&apos;ll place the order 🙌
-                  </div>
-                  <p className="text-[10px] text-gray-400 text-right mt-0.5">12:34 PM</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 pt-1">
-                <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#5a7a2e" }}>
-                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                </div>
-                <span className="text-sm font-semibold" style={{ color: "#5a7a2e" }}>Order placed</span>
-                <span className="text-[10px] text-gray-400 ml-auto">12:45 PM</span>
-              </div>
-            </div>
-
-            <div className="px-4 pb-3">
-              <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-200">
-                <button className="text-gray-400">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-                </button>
-                <span className="text-sm text-gray-400 flex-1">Message lunch crew...</span>
-                <button className="w-7 h-7 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: "#5a7a2e" }}>
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
+    {/* C - show avatar only for first message in group */}
+    <div className="flex items-end gap-1.5">
+      <div className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-bold" style={{ background: "#ffd4e8", color: "#d43b7c" }}>C</div>
+      <div>
+        <p className="text-[9px] text-gray-400 mb-0.5 ml-1">Sofia</p>
+        <div className="px-3 py-1.5 rounded-[18px] rounded-bl-[4px] text-[13px] text-gray-900 bg-gray-100 max-w-[75%] inline-block">
+          How about Sushi? 🍣
         </div>
       </div>
+    </div>
 
+    {/* B */}
+    <div className="flex items-end gap-1.5">
+      <div className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-bold" style={{ background: "#e9d4ff", color: "#7c3bd4" }}>B</div>
+      <div>
+        <p className="text-[9px] text-gray-400 mb-0.5 ml-1">Maya</p>
+        <div className="px-3 py-1.5 rounded-[18px] rounded-bl-[4px] text-[13px] text-gray-900 bg-gray-100 inline-block">
+          Works for me! 👍
+        </div>
+      </div>
+    </div>
+
+    {/* D */}
+    <div className="flex items-end gap-1.5">
+      <div className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center text-[9px] font-bold" style={{ background: "#ffecd4", color: "#d47c3b" }}>D</div>
+      <div>
+        <p className="text-[9px] text-gray-400 mb-0.5 ml-1">Priya</p>
+        <div className="px-3 py-1.5 rounded-[18px] rounded-bl-[4px] text-[13px] text-gray-900 bg-gray-100 inline-block">
+          I'll add drinks 🧃
+        </div>
+      </div>
+    </div>
+
+    {/* Me again */}
+    <div className="flex justify-end mt-1">
+      <div className="px-3 py-1.5 rounded-[18px] rounded-tr-[4px] text-[13px] text-white max-w-[80%] text-right" style={{ background: "#007AFF" }}>
+        Perfect, I'll place the order 🙌
+      </div>
+    </div>
+
+    {/* Delivered */}
+    <p className="text-right text-[9px] text-gray-400 pr-1">Delivered · 12:34 PM</p>
+
+    {/* Order placed */}
+    <div className="flex items-center gap-1.5 pt-1 pb-0.5">
+      <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#5a7a2e" }}>
+        <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+      </div>
+      <span className="text-[12px] font-semibold" style={{ color: "#5a7a2e" }}>Order placed</span>
+      <span className="text-[10px] text-gray-400 ml-auto">12:45 PM</span>
+    </div>
+  </div>
+
+  {/* Input */}
+  <div className="px-3 pb-3">
+    <div className="flex items-center gap-2 bg-gray-50 rounded-full px-3 py-2 border border-gray-200">
+      <button className="text-gray-400">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+      </button>
+      <span className="text-[13px] text-gray-400 flex-1">iMessage</span>
+      <button className="w-6 h-6 rounded-full flex items-center justify-center text-white flex-shrink-0" style={{ background: "#5a7a2e" }}>
+        <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" /></svg>
+      </button>
+    </div>
+  </div>
+</div>
       {/* ── FEATURES ── */}
       <div id="features" className="max-w-5xl mx-auto px-8 pt-10 pb-8">
         <h2 className="text-center font-black uppercase mb-8 tracking-wide" style={{ fontSize: "1.15rem", color: "#1a1a0e", letterSpacing: "0.04em" }}>
