@@ -110,13 +110,14 @@ export default function Home() {
             <img
               src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80"
               alt="Main food bowl"
-              className="absolute rounded-full object-cover shadow-2xl"
+              className="absolute rounded-full object-cover shadow-2xl border border-white"
               style={{
                 width: "430px",
                 height: "430px",
                 left: "55px",
                 top: "55px",
-                objectPosition: "50% center",
+                objectPosition: "60% center",
+                transform: "scale(1.12)",
                 zIndex: 6,
               }}
             />
@@ -125,13 +126,14 @@ export default function Home() {
             <img
               src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"
               alt="Pasta dish"
-              className="absolute rounded-full object-cover shadow-xl border-4 border-white"
+              className="absolute rounded-full object-cover shadow-xl border border-white"
               style={{
                 width: "130px",
                 height: "130px",
-                left: "0px",
+                left: "-10px",
                 top: "0px",
-                objectPosition: "center",
+                objectPosition: "30% center",
+                transform: "scale(1.32)",
                 zIndex: 7,
               }}
             />
