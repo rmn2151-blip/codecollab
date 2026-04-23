@@ -125,8 +125,8 @@ export default function Home() {
           {/* ── CHAT CARD ── */}
           <div
             className="absolute bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
-            style={{ right: "40px", top: "50%", transform: "translateY(-50%)", width: "380px", zIndex: 20 }}
-          >
+            style={{ right: "30px", top: "50%", transform: "translateY(-50%)", width: "420px", zIndex: 20 }}
+           >
             {/* Header */}
             <div className="flex items-center gap-2.5 px-4 py-3 border-b border-gray-100 bg-gray-50">
               <button className="text-gray-400 mr-1">
