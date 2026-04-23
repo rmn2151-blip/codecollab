@@ -73,21 +73,21 @@ export default function SignupPage() {
     );
   }
 
-  // Real brand logos via Clearbit — no API key needed, completely free
-  // Avatars via DiceBear 'personas' style — illustrated little people, seeded for consistency
+  // Using Google S2 favicon API with size=128 — serves real brand logos reliably.
+  // brandBg = the actual brand color so the circle always looks polished even while loading.
   const restaurants = [
-    { name: "Chipotle",       domain: "chipotle.com",        groups: 3, save: "2.45", seeds: ["Mia", "Noah", "Zoe"] },
-    { name: "Panda Express",  domain: "pandaexpress.com",    groups: 2, save: "1.80", seeds: ["Liam", "Ava", "Ethan"] },
-    { name: "Wingstop",       domain: "wingstop.com",        groups: 4, save: "2.10", seeds: ["Sofia", "Lucas", "Isla", "Kai"] },
-    { name: "Taco Bell",      domain: "tacobell.com",        groups: 1, save: "1.30", seeds: ["Maya", "Jace"] },
-    { name: "Shake Shack",    domain: "shakeshack.com",      groups: 2, save: "1.75", seeds: ["Leo", "Ruby", "Theo"] },
+    { name: "Chipotle",       domain: "chipotle.com",     brandBg: "#A81612", groups: 3, save: "2.45", seeds: ["Mia", "Noah", "Zoe"] },
+    { name: "Panda Express",  domain: "pandaexpress.com", brandBg: "#D62828", groups: 2, save: "1.80", seeds: ["Liam", "Ava", "Ethan"] },
+    { name: "Wingstop",       domain: "wingstop.com",     brandBg: "#000000", groups: 4, save: "2.10", seeds: ["Sofia", "Lucas", "Isla", "Kai"] },
+    { name: "Taco Bell",      domain: "tacobell.com",     brandBg: "#5D1E7F", groups: 1, save: "1.30", seeds: ["Maya", "Jace"] },
+    { name: "Shake Shack",    domain: "shakeshack.com",   brandBg: "#2F5F3F", groups: 2, save: "1.75", seeds: ["Leo", "Ruby", "Theo"] },
   ];
 
   const avatarUrl = (seed: string) =>
     `https://api.dicebear.com/7.x/personas/svg?seed=${encodeURIComponent(seed)}&backgroundColor=f5d7c4,e8c5e8,f0c4d4,c4e0d0,f5e0a0`;
 
-  const brandLogo = (domain: string) =>
-    `https://logo.clearbit.com/${domain}`;
+  const logoUrl = (domain: string) =>
+    `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
   return (
     <div className="min-h-screen" style={{ background: "#f0ece3" }}>
@@ -169,16 +169,16 @@ export default function SignupPage() {
               <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-4 space-y-2">
                 {restaurants.map((r) => (
                   <div key={r.name} className="flex items-center gap-3 py-2">
-                    {/* Real brand logo */}
-                    <div className="w-11 h-11 rounded-full flex-shrink-0 bg-white border border-gray-100 overflow-hidden flex items-center justify-center shadow-sm">
+                    {/* Real brand logo — colored circle with logo image on top */}
+                    <div
+                      className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center shadow-sm overflow-hidden"
+                      style={{ background: r.brandBg }}
+                    >
                       <img
-                        src={brandLogo(r.domain)}
+                        src={logoUrl(r.domain)}
                         alt={`${r.name} logo`}
-                        className="w-full h-full object-contain"
-                        onError={(e) => {
-                          // Fallback to Google favicon if Clearbit doesn't have it
-                          (e.target as HTMLImageElement).src = `https://www.google.com/s2/favicons?domain=${r.domain}&sz=128`;
-                        }}
+                        className="w-8 h-8 object-contain"
+                        style={{ filter: "drop-shadow(0 0 1px rgba(255,255,255,0.2))" }}
                       />
                     </div>
 
@@ -192,7 +192,6 @@ export default function SignupPage() {
                       </div>
                     </div>
 
-                    {/* Illustrated avatars */}
                     <div className="flex -space-x-2 flex-shrink-0">
                       {r.seeds.map((seed) => (
                         <img
@@ -216,7 +215,6 @@ export default function SignupPage() {
               </div>
             </div>
 
-            {/* "More people, lower fees" callout */}
             <div className="mt-6 rounded-2xl p-4 flex items-center gap-3" style={{ background: "#eef3e6" }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#c6d9a0" }}>
                 <svg className="w-5 h-5" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
