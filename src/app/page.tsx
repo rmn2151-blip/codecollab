@@ -132,8 +132,8 @@ export default function Home() {
   style={{
     width: "130px",
     height: "130px",
-    left: "-20px",
-    top: "10px",
+    left: "40px",
+    top: "30px",
     zIndex: 7,
   }}
 >
