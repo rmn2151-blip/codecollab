@@ -50,18 +50,18 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen" style={{ background: "#f0ece3" }}>
 
-      {/* ── NAV ── */}
-      <nav className="px-8 py-4 flex items-center justify-between" style={{ background: "#f0ece3" }}>
+      {/* ── NAV — white bar ── */}
+      <nav className="bg-white border-b border-gray-100 px-8 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <svg className="w-7 h-7" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <svg className="w-6 h-6" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
           </svg>
-          <span className="text-lg font-bold text-gray-900" style={{ fontFamily: "var(--font-fredoka)" }}>
+          <span className="text-base font-bold text-gray-900" style={{ fontFamily: "var(--font-fredoka)" }}>
             Code<span style={{ color: "#6b8f3e" }}>Collab</span>
           </span>
         </Link>
-        <Link href="/" className="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center gap-1.5 font-medium">
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 inline-flex items-center gap-1.5 font-medium">
+          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
           Back to home
@@ -69,7 +69,7 @@ export default function LoginPage() {
       </nav>
 
       {/* ── MAIN ── */}
-      <main className="relative overflow-hidden" style={{ minHeight: "calc(100vh - 64px)" }}>
+      <main className="relative overflow-hidden" style={{ minHeight: "calc(100vh - 57px)" }}>
 
         {/* Dotted grid — top right */}
         <div className="absolute pointer-events-none opacity-50" style={{ top: "24px", right: "60px", zIndex: 1 }}>
@@ -85,18 +85,7 @@ export default function LoginPage() {
         {/* Centered content */}
         <div className="max-w-xl mx-auto px-6 py-10 flex flex-col items-center" style={{ position: "relative", zIndex: 10 }}>
 
-          {/* Badge */}
-          <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 border"
-            style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}
-          >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-            </svg>
-            Barnard &amp; Columbia only
-          </span>
-
-          {/* Headline — centered, serif feel */}
+          {/* Headline — NO badge above anymore */}
           <h1
             className="font-bold text-center mb-4"
             style={{
@@ -118,6 +107,20 @@ export default function LoginPage() {
 
           {/* ── FORM CARD ── */}
           <div className="w-full bg-white rounded-2xl border border-gray-100 p-8 shadow-lg" style={{ maxWidth: "440px" }}>
+
+            {/* Badge — now INSIDE the card, centered above "Sign in" */}
+            <div className="flex justify-center mb-4">
+              <span
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-1.5 rounded-full border"
+                style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                </svg>
+                Barnard &amp; Columbia only
+              </span>
+            </div>
+
             <h2 className="text-2xl font-bold text-center text-gray-900 mb-6" style={{ fontFamily: "Georgia, serif" }}>
               Sign in
             </h2>
