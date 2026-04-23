@@ -87,17 +87,69 @@ export default function Home() {
 
           {/* ── BOWL ── */}
           {/* FIX: cleaner bowl image (overhead shot, no plate/napkin behind it) */}
-          <div className="absolute" style={{ left: "560px", top: "50%", transform: "translateY(-50%)", zIndex: 5 }}>
-            <svg className="absolute pointer-events-none" style={{ top: "30px", left: "30px", zIndex: 6 }} width="30" height="30" viewBox="0 0 32 32" fill="none">
-              <line x1="16" y1="2" x2="16" y2="11" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="24" y1="8" x2="30" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
-              <line x1="8" y1="8" x2="2" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
+          {/* ── HERO FOOD COLLAGE ── */}
+          <div
+            className="absolute"
+            style={{ left: "500px", top: "50%", transform: "translateY(-50%)", zIndex: 5, width: "520px", height: "520px" }}
+          >
+            {/* pink spark */}
+            <svg
+              className="absolute pointer-events-none"
+              style={{ top: "20px", left: "160px", zIndex: 8 }}
+              width="30"
+              height="30"
+              viewBox="0 0 32 32"
+              fill="none"
+            >
+              <line x1="16" y1="2" x2="16" y2="11" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="24" y1="8" x2="30" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round" />
+              <line x1="8" y1="8" x2="2" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round" />
             </svg>
+
+            {/* big main bowl */}
             <img
-              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80"
-              alt="Food bowl"
-              className="rounded-full object-cover shadow-2xl"
-              style={{ width: "500px", height: "500px", objectPosition: "50% center" }}            />
+              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80"
+              alt="Main food bowl"
+              className="absolute rounded-full object-cover shadow-2xl"
+              style={{
+                width: "430px",
+                height: "430px",
+                left: "55px",
+                top: "55px",
+                objectPosition: "50% center",
+                zIndex: 6,
+              }}
+            />
+
+            {/* small pasta top left */}
+            <img
+              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"
+              alt="Pasta dish"
+              className="absolute rounded-full object-cover shadow-xl border-4 border-white"
+              style={{
+                width: "130px",
+                height: "130px",
+                left: "0px",
+                top: "0px",
+                objectPosition: "center",
+                zIndex: 7,
+              }}
+            />
+
+            {/* small sushi bottom right */}
+            <img
+              src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=80"
+              alt="Sushi dish"
+              className="absolute rounded-full object-cover shadow-xl border-4 border-white"
+              style={{
+                width: "130px",
+                height: "130px",
+                left: "340px",
+                top: "340px",
+                objectPosition: "center",
+                zIndex: 7,
+              }}
+            />
           </div>
 
           {/* ── CHAT CARD — anchored to right of 1440px box ── */}
