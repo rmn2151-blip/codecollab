@@ -124,7 +124,7 @@ export default function SignupPage() {
         <div className="absolute pointer-events-none" style={{ bottom: "-80px", left: "-60px", width: "280px", height: "280px", borderRadius: "50%", background: "#d8e4c4", opacity: 0.4, zIndex: 0 }} />
         <div className="absolute pointer-events-none" style={{ bottom: "60px", right: "-80px", width: "220px", height: "220px", borderRadius: "50%", background: "#d8e4c4", opacity: 0.5, zIndex: 0 }} />
 
-        <div className="max-w-7xl mx-auto px-8 py-10 grid lg:grid-cols-2 gap-16 items-start relative" style={{ zIndex: 10 }}>
+        <div className="max-w-7xl mx-auto px-8 py-6 grid lg:grid-cols-2 gap-16 items-start relative" style={{ zIndex: 10 }}>
 
           {/* ── LEFT PANEL ── */}
           <div className="relative flex flex-col">
@@ -134,7 +134,7 @@ export default function SignupPage() {
               <span style={{ color: "#5a7a2e" }}>Save together.</span>
             </h1>
 
-            <p className="text-base leading-relaxed mb-8 max-w-sm" style={{ color: "#666" }}>
+            <p className="text-base leading-relaxed mb-6 max-w-sm" style={{ color: "#666" }}>
               Join CodeCollab to order food together, chat in real time, and unlock group savings on delivery.
             </p>
 
@@ -158,10 +158,10 @@ export default function SignupPage() {
                 <path d="M 40 10 Q 70 60 30 110 Q 10 150 50 190" stroke="#5a7a2e" strokeWidth="1.5" strokeDasharray="4 4" fill="none" opacity="0.35" />
               </svg>
 
-              {/* Restaurants card */}
-              <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-4 space-y-2">
+              {/* Restaurants card — tighter padding so everything fits */}
+              <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-3 space-y-0">
                 {restaurants.map((r) => (
-                  <div key={r.name} className="flex items-center gap-3 py-2">
+                  <div key={r.name} className="flex items-center gap-3 py-1.5">
                     {/* Real brand logo — colored circle with logo image on top */}
                     <div
                       className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center shadow-sm overflow-hidden"
@@ -208,7 +208,7 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <div className="mt-6 rounded-2xl p-4 flex items-center gap-3" style={{ background: "#eef3e6" }}>
+            <div className="mt-4 rounded-2xl p-4 flex items-center gap-3" style={{ background: "#eef3e6" }}>
               <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#c6d9a0" }}>
                 <svg className="w-5 h-5" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
