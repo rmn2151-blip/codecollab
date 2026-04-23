@@ -10,7 +10,16 @@ export default function Home() {
           <svg className="w-6 h-6" style={{ color: "#4a5c2f" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
           </svg>
-          <span className="text-base font-bold text-gray-900">Code<span style={{ color: "#6b8f3e" }}>Collab</span></span>
+        
+          <span
+          className="text-base font-bold text-gray-900"
+          style={{ fontFamily: "var(--font-fredoka)" }}
+          >
+            Code<span style={{ color: "#6b8f3e" }}>Collab</span>
+            </span>
+
+
+
         </div>
         <div className="flex gap-3">
           <Link href="/login" className="px-5 py-2 text-sm border-2 border-gray-800 rounded-full text-gray-800 hover:bg-gray-50 font-semibold bg-white">Sign in</Link>
@@ -45,9 +54,14 @@ export default function Home() {
               </svg>
               Barnard &amp; Columbia only
             </span>
-
-            <h1 className="font-black uppercase mb-4" style={{ fontSize: "3rem", color: "#1a1a0e", lineHeight: 1.05 }}>
-              ORDER FOOD TOGETHER,<br />
+            <h1
+            className="font-black uppercase mb-4"
+            style={{
+            fontFamily: "var(--font-fredoka)",
+            fontSize: "3rem",
+            color: "#1a1a0e",
+            lineHeight: 1.05,
+            }} >              ORDER FOOD TOGETHER,<br />
               <span style={{ color: "#6b8f3e" }}>WITHOUT THE CHAOS</span>
             </h1>
 
@@ -80,10 +94,10 @@ export default function Home() {
               <line x1="8" y1="8" x2="2" y2="2" stroke="#f472b6" strokeWidth="2.5" strokeLinecap="round"/>
             </svg>
             <img
-              src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&auto=format&fit=crop&q=80"
+              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80"
               alt="Food bowl"
               className="rounded-full object-cover shadow-2xl"
-              style={{ width: "500px", height: "500px", objectPosition: "35% center" }}            />
+              style={{ width: "500px", height: "500px", objectPosition: "50% center" }}            />
           </div>
 
           {/* ── CHAT CARD — anchored to right of 1440px box ── */}
