@@ -129,13 +129,6 @@ export default function SignupPage() {
           {/* ── LEFT PANEL ── */}
           <div className="relative flex flex-col">
 
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border w-fit" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
-              </svg>
-              Barnard &amp; Columbia only
-            </span>
-
             <h1 className="font-bold mb-4" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "3.25rem", color: "#1a1a0e", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
               Order together.<br />
               <span style={{ color: "#5a7a2e" }}>Save together.</span>
