@@ -117,7 +117,7 @@ export default function Home() {
                 left: "80px",
                 top: "80px",
                 objectPosition: "75% center",
-                transform: "scale(1.15)",
+                transform: "scale(1.3)",
                 zIndex: 6,
               }}
             />
@@ -131,9 +131,9 @@ export default function Home() {
                 width: "130px",
                 height: "130px",
                 left: "-20px",
-                top: "-10px",
+                top: "10x",
                 objectPosition: "30% center",
-                transform: "scale(1.5)",
+                transform: "scale(1.3)",
                 zIndex: 7,
               }}
             />
