@@ -112,12 +112,12 @@ export default function Home() {
               alt="Main food bowl"
               className="absolute rounded-full object-cover shadow-2xl border border-white"
               style={{
-                width: "430px",
-                height: "430px",
-                left: "55px",
-                top: "55px",
-                objectPosition: "60% center",
-                transform: "scale(1.12)",
+                width: "360px",
+                height: "360px",
+                left: "80px",
+                top: "80px",
+                objectPosition: "75% center",
+                transform: "scale(1.15)",
                 zIndex: 6,
               }}
             />
@@ -130,10 +130,10 @@ export default function Home() {
               style={{
                 width: "130px",
                 height: "130px",
-                left: "-10px",
-                top: "0px",
+                left: "-20px",
+                top: "-10px",
                 objectPosition: "30% center",
-                transform: "scale(1.32)",
+                transform: "scale(1.5)",
                 zIndex: 7,
               }}
             />
@@ -142,7 +142,7 @@ export default function Home() {
             <img
               src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=80"
               alt="Sushi dish"
-              className="absolute rounded-full object-cover shadow-xl border-4 border-white"
+              className="absolute rounded-full object-cover shadow-xl border border-white"
               style={{
                 width: "130px",
                 height: "130px",
