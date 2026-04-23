@@ -73,13 +73,21 @@ export default function SignupPage() {
     );
   }
 
+  // Real brand logos via Clearbit — no API key needed, completely free
+  // Avatars via DiceBear 'personas' style — illustrated little people, seeded for consistency
   const restaurants = [
-    { name: "Chipotle", logo: "#A81612", groups: 3, save: "2.45", members: 3 },
-    { name: "Panda Express", logo: "#D62828", groups: 2, save: "1.80", members: 3 },
-    { name: "Wingstop", logo: "#2C2C2A", groups: 4, save: "2.10", members: 4 },
-    { name: "Taco Bell", logo: "#6B1F7A", groups: 1, save: "1.30", members: 2 },
-    { name: "Shake Shack", logo: "#2F5F3F", groups: 2, save: "1.75", members: 3 },
+    { name: "Chipotle",       domain: "chipotle.com",        groups: 3, save: "2.45", seeds: ["Mia", "Noah", "Zoe"] },
+    { name: "Panda Express",  domain: "pandaexpress.com",    groups: 2, save: "1.80", seeds: ["Liam", "Ava", "Ethan"] },
+    { name: "Wingstop",       domain: "wingstop.com",        groups: 4, save: "2.10", seeds: ["Sofia", "Lucas", "Isla", "Kai"] },
+    { name: "Taco Bell",      domain: "tacobell.com",        groups: 1, save: "1.30", seeds: ["Maya", "Jace"] },
+    { name: "Shake Shack",    domain: "shakeshack.com",      groups: 2, save: "1.75", seeds: ["Leo", "Ruby", "Theo"] },
   ];
+
+  const avatarUrl = (seed: string) =>
+    `https://api.dicebear.com/7.x/personas/svg?seed=${encodeURIComponent(seed)}&backgroundColor=f5d7c4,e8c5e8,f0c4d4,c4e0d0,f5e0a0`;
+
+  const brandLogo = (domain: string) =>
+    `https://logo.clearbit.com/${domain}`;
 
   return (
     <div className="min-h-screen" style={{ background: "#f0ece3" }}>
@@ -103,7 +111,6 @@ export default function SignupPage() {
       {/* ── MAIN LAYOUT ── */}
       <main className="relative overflow-hidden">
 
-        {/* Decorative dot grid — top right */}
         <div className="absolute pointer-events-none opacity-40" style={{ top: "60px", right: "60px", zIndex: 1 }}>
           {Array.from({ length: 6 }).map((_, r) => (
             <div key={r} className="flex gap-2.5 mb-2.5">
@@ -114,7 +121,6 @@ export default function SignupPage() {
           ))}
         </div>
 
-        {/* Decorative circles */}
         <div className="absolute pointer-events-none" style={{ bottom: "-80px", left: "-60px", width: "280px", height: "280px", borderRadius: "50%", background: "#d8e4c4", opacity: 0.4, zIndex: 0 }} />
         <div className="absolute pointer-events-none" style={{ bottom: "60px", right: "-80px", width: "220px", height: "220px", borderRadius: "50%", background: "#d8e4c4", opacity: 0.5, zIndex: 0 }} />
 
@@ -123,7 +129,6 @@ export default function SignupPage() {
           {/* ── LEFT PANEL ── */}
           <div className="relative flex flex-col">
 
-            {/* Badge */}
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border w-fit" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 0 0-5.25 5.25v3a3 3 0 0 0-3 3v6.75a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3v-6.75a3 3 0 0 0-3-3v-3c0-2.9-2.35-5.25-5.25-5.25Zm3.75 8.25v-3a3.75 3.75 0 1 0-7.5 0v3h7.5Z" clipRule="evenodd" />
@@ -131,7 +136,6 @@ export default function SignupPage() {
               Barnard &amp; Columbia only
             </span>
 
-            {/* Heading */}
             <h1 className="font-bold mb-4" style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontSize: "3.25rem", color: "#1a1a0e", lineHeight: 1.05, letterSpacing: "-0.02em" }}>
               Order together.<br />
               <span style={{ color: "#5a7a2e" }}>Save together.</span>
@@ -141,10 +145,8 @@ export default function SignupPage() {
               Join CodeCollab to order food together, chat in real time, and unlock group savings on delivery.
             </p>
 
-            {/* Restaurant list card */}
             <div className="relative">
 
-              {/* Floating scooter icon top-right */}
               <div className="absolute -top-2 -right-4 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
                 <svg className="w-7 h-7" style={{ color: "#5a7a2e" }} fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
                   <circle cx="17" cy="17" r="3" />
@@ -153,14 +155,12 @@ export default function SignupPage() {
                 </svg>
               </div>
 
-              {/* Floating people icon bottom-left */}
               <div className="absolute -bottom-3 -left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg z-10">
                 <svg className="w-6 h-6" style={{ color: "#5a7a2e" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
                 </svg>
               </div>
 
-              {/* Dashed decorative line */}
               <svg className="absolute pointer-events-none" style={{ top: "20px", right: "-20px", width: "80px", height: "200px" }} viewBox="0 0 80 200" fill="none">
                 <path d="M 40 10 Q 70 60 30 110 Q 10 150 50 190" stroke="#5a7a2e" strokeWidth="1.5" strokeDasharray="4 4" fill="none" opacity="0.35" />
               </svg>
@@ -169,12 +169,19 @@ export default function SignupPage() {
               <div className="bg-white rounded-2xl shadow-md border border-gray-100 p-4 space-y-2">
                 {restaurants.map((r) => (
                   <div key={r.name} className="flex items-center gap-3 py-2">
-                    {/* Logo */}
-                    <div className="w-11 h-11 rounded-full flex-shrink-0 flex items-center justify-center" style={{ background: r.logo }}>
-                      <span className="text-white text-[9px] font-black">{r.name.split(" ").map(w => w[0]).join("")}</span>
+                    {/* Real brand logo */}
+                    <div className="w-11 h-11 rounded-full flex-shrink-0 bg-white border border-gray-100 overflow-hidden flex items-center justify-center shadow-sm">
+                      <img
+                        src={brandLogo(r.domain)}
+                        alt={`${r.name} logo`}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          // Fallback to Google favicon if Clearbit doesn't have it
+                          (e.target as HTMLImageElement).src = `https://www.google.com/s2/favicons?domain=${r.domain}&sz=128`;
+                        }}
+                      />
                     </div>
 
-                    {/* Info */}
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-bold text-gray-900 leading-tight">{r.name}</div>
                       <div className="flex items-center gap-1 text-xs text-gray-500 mt-0.5">
@@ -185,17 +192,18 @@ export default function SignupPage() {
                       </div>
                     </div>
 
-                    {/* Member avatars */}
+                    {/* Illustrated avatars */}
                     <div className="flex -space-x-2 flex-shrink-0">
-                      {Array.from({ length: r.members }).map((_, i) => {
-                        const bgs = ["#f2c4a8", "#d8c4f2", "#f2c4d4", "#c4d8c4"];
-                        return (
-                          <div key={i} className="w-6 h-6 rounded-full border-2 border-white" style={{ background: bgs[i % bgs.length] }} />
-                        );
-                      })}
+                      {r.seeds.map((seed) => (
+                        <img
+                          key={seed}
+                          src={avatarUrl(seed)}
+                          alt=""
+                          className="w-7 h-7 rounded-full border-2 border-white bg-gray-100"
+                        />
+                      ))}
                     </div>
 
-                    {/* Save badge */}
                     <div className="text-xs font-bold px-2.5 py-1 rounded-full flex-shrink-0" style={{ background: "#eef3e6", color: "#4a5c2f" }}>
                       Save ${r.save}
                     </div>
@@ -220,8 +228,13 @@ export default function SignupPage() {
                 <p className="text-xs text-gray-600 leading-relaxed mt-0.5">The more people who join your order, the less everyone pays for delivery.</p>
               </div>
               <div className="flex -space-x-2">
-                {["#f2c4a8", "#d8c4f2", "#f2c4d4", "#c4d8c4"].map((bg, i) => (
-                  <div key={i} className="w-7 h-7 rounded-full border-2 border-white" style={{ background: bg }} />
+                {["Emma", "Oliver", "Lily", "Max"].map((seed) => (
+                  <img
+                    key={seed}
+                    src={avatarUrl(seed)}
+                    alt=""
+                    className="w-8 h-8 rounded-full border-2 border-white bg-gray-100"
+                  />
                 ))}
               </div>
               <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style={{ background: "#5a7a2e" }}>-$$$</div>
@@ -232,7 +245,6 @@ export default function SignupPage() {
           <div className="flex justify-center lg:justify-end">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 w-full max-w-md p-8 relative">
 
-              {/* Badge */}
               <div className="flex justify-center mb-5">
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border" style={{ background: "#eef3e6", color: "#4a5c2f", borderColor: "#c6d9a0" }}>
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -242,7 +254,6 @@ export default function SignupPage() {
                 </span>
               </div>
 
-              {/* Title */}
               <div className="text-center mb-6">
                 <h1 className="font-bold mb-1.5" style={{ fontFamily: "Georgia, serif", fontSize: "2rem", color: "#1a1a0e", letterSpacing: "-0.01em" }}>
                   Create <span style={{ color: "#5a7a2e" }}>your account</span>
@@ -255,7 +266,6 @@ export default function SignupPage() {
                   <p className="text-sm text-red-500 text-center bg-red-50 py-2 px-3 rounded-lg">{errors.form}</p>
                 )}
 
-                {/* Display name */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="displayName">
                     Display name
@@ -276,7 +286,6 @@ export default function SignupPage() {
                   {errors.displayName && <p className="text-xs text-red-500 mt-1">{errors.displayName}</p>}
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="email">
                     Email
@@ -297,7 +306,6 @@ export default function SignupPage() {
                   {errors.email && <p className="text-xs text-red-500 mt-1">{errors.email}</p>}
                 </div>
 
-                {/* Password */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="password">
                     Password
@@ -331,7 +339,6 @@ export default function SignupPage() {
                   {errors.password && <p className="text-xs text-red-500 mt-1">{errors.password}</p>}
                 </div>
 
-                {/* Confirm password */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1.5" htmlFor="confirmPassword">
                     Confirm password
@@ -365,7 +372,6 @@ export default function SignupPage() {
                   {errors.confirmPassword && <p className="text-xs text-red-500 mt-1">{errors.confirmPassword}</p>}
                 </div>
 
-                {/* Submit */}
                 <button
                   type="submit"
                   disabled={loading}
