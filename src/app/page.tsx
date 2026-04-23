@@ -107,37 +107,43 @@ export default function Home() {
             </svg>
 
             {/* big main bowl */}
-            <img
-              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80"
-              alt="Main food bowl"
-              className="absolute rounded-full object-cover shadow-2xl border border-white"
-              style={{
-                width: "360px",
-                height: "360px",
-                left: "80px",
-                top: "80px",
-                objectPosition: "75% center",
-                transform: "scale(1.3)",
-                zIndex: 6,
-              }}
-            />
+{/* big main bowl */}
+<div
+  className="absolute rounded-full overflow-hidden shadow-2xl border border-white"
+  style={{
+    width: "360px",
+    height: "360px",
+    left: "80px",
+    top: "80px",
+    zIndex: 6,
+  }}
+>
+  <img
+    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80"
+    alt="Main food bowl"
+    className="w-full h-full object-cover"
+    style={{ objectPosition: "75% center", transform: "scale(1.5)" }}
+  />
+</div>
 
-            {/* small pasta top left */}
-            <img
-              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"
-              alt="Pasta dish"
-              className="absolute rounded-full object-cover shadow-xl border border-white"
-              style={{
-                width: "130px",
-                height: "130px",
-                left: "-20px",
-                top: "10x",
-                objectPosition: "30% center",
-                transform: "scale(1.3)",
-                zIndex: 7,
-              }}
-            />
-
+{/* small pasta top left — wrap in overflow-hidden div to clip the circle */}
+<div
+  className="absolute rounded-full overflow-hidden shadow-xl border border-white"
+  style={{
+    width: "130px",
+    height: "130px",
+    left: "-20px",
+    top: "10px",
+    zIndex: 7,
+  }}
+>
+  <img
+    src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80"
+    alt="Pasta dish"
+    className="w-full h-full object-cover"
+    style={{ objectPosition: "50% 40%", transform: "scale(1.4)" }}
+  />
+</div>
             {/* small sushi bottom right */}
             <img
               src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=500&q=80"
