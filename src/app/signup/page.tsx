@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { signUpSchema } from "@/lib/validators/auth";
@@ -14,8 +15,8 @@ export default function SignupPage() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -51,26 +52,7 @@ export default function SignupPage() {
       return;
     }
 
-    setSubmitted(true);
-    setLoading(false);
-  }
-
-  if (submitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4" style={{ background: "#f0ece3" }}>
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 w-full max-w-md p-8 text-center">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "#eef3e6" }}>
-            <svg className="w-6 h-6" style={{ color: "#5a7a2e" }} fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-            </svg>
-          </div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2">Check your email</h2>
-          <p className="text-sm text-gray-500">
-            We sent a confirmation link to <span className="font-medium text-gray-700">{formData.email}</span>. Click it to activate your account.
-          </p>
-        </div>
-      </div>
-    );
+    router.push("/groups");
   }
 
   // Using Google S2 favicon API with size=128 — serves real brand logos reliably.
