@@ -39,7 +39,7 @@ export default function SignupPage() {
       email: formData.email,
       password: formData.password,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
+        emailRedirectTo: `${window.location.origin}/groups`,
         data: {
           display_name: formData.displayName,
         },
