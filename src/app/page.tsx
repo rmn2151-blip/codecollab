@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{ background: "#f0ece3" }}>
+    <div className="min-h-screen" style={{ background: "#f0ece3", fontFamily: "var(--font-fredoka)" }}>
 
       {/* ── NAVBAR ── */}
       <nav className="flex justify-between items-center px-8 py-3 bg-white border-b border-gray-100">
@@ -152,7 +152,7 @@ export default function Home() {
             </div>
 
             {/* Messages */}
-            <div className="px-3 py-3 space-y-1" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
+            <div className="px-3 py-3 space-y-1">
               <p className="text-center text-[10px] text-gray-400 py-1">Today 12:30 PM</p>
 
               {/* Me */}

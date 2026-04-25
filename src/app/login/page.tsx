@@ -48,7 +48,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen" style={{ background: "#f0ece3" }}>
+    <div className="min-h-screen" style={{ background: "#f0ece3", fontFamily: "var(--font-fredoka)" }}>
 
       {/* ── NAV — white bar ── */}
       <nav className="bg-white border-b border-gray-100 px-8 py-3 flex items-center justify-between">
@@ -89,7 +89,7 @@ export default function LoginPage() {
           <h1
             className="font-bold text-center mb-4"
             style={{
-              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontFamily: "var(--font-fredoka)",
               fontSize: "4rem",
               color: "#1a1a0e",
               lineHeight: 1.0,
@@ -121,7 +121,7 @@ export default function LoginPage() {
               </span>
             </div>
 
-            <h2 className="text-2xl font-bold text-center text-gray-900 mb-6" style={{ fontFamily: "Georgia, serif" }}>
+            <h2 className="text-2xl font-bold text-center text-gray-900 mb-6" style={{ fontFamily: "var(--font-fredoka)" }}>
               Sign in
             </h2>
 
