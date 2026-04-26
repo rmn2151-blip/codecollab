@@ -1,4 +1,4 @@
-# CodeCollab
+# LionEats
 
 Group restaurant ordering platform for university students. Create groups, pick a restaurant, set dietary restrictions, invite others to join, chat in real-time to decide what to order, and the group leader dissolves the group when the order is placed.
 
