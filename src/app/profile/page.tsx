@@ -232,7 +232,7 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* INFO CARD - "CodeCollab makes group ordering simple" */}
+            {/* INFO CARD - "LionEats makes group ordering simple" */}
             <div
               className="rounded-2xl p-5"
               style={{
@@ -251,7 +251,7 @@ export default function ProfilePage() {
                   className="text-sm leading-relaxed"
                   style={{ color: COLORS.ink, fontFamily: "var(--font-fredoka)" }}
                 >
-                  CodeCollab makes group ordering simple, so you can focus on what matters.
+                  LionEats makes group ordering simple, so you can focus on what matters.
                 </p>
               </div>
               <div

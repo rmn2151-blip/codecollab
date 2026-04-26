@@ -93,7 +93,7 @@ export function Navbar({ user }: NavbarProps) {
             </svg>
           </div>
           <span className="text-lg font-bold" style={{ color: COLORS.ink }}>
-            Code<span style={{ color: COLORS.oliveLight }}>Collab</span>
+            Lion<span style={{ color: COLORS.oliveLight }}>Eats</span>
           </span>
         </Link>
 

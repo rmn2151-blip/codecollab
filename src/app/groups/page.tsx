@@ -407,7 +407,7 @@ export default function GroupsPage() {
                 </svg>
               </div>
               <div>
-                <p className="font-bold text-xs text-gray-900">New to CodeCollab?</p>
+                <p className="font-bold text-xs text-gray-900">New to LionEats?</p>
                 <p className="text-[11px] text-gray-600">
                   It's the easiest way to order together and save on delivery.
                 </p>

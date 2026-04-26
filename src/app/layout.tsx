@@ -21,8 +21,8 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "CodeCollab - Group Restaurant Ordering",
-  description: "Group restaurant ordering for university students",
+  title: "LionEats - Group Restaurant Ordering",
+  description: "Group restaurant ordering for Columbia and Barnard students",
 };
 
 export default function RootLayout({

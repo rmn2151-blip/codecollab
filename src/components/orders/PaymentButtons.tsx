@@ -49,8 +49,8 @@ export function PaymentButtons({
   }
 
   const note = groupName
-    ? `CodeCollab: ${groupName}`
-    : `CodeCollab order`;
+    ? `LionEats: ${groupName}`
+    : `LionEats order`;
 
   // Venmo universal link — works on both mobile (opens app) and desktop (web)
   // Format: https://venmo.com/<username>?txn=pay&amount=X&note=Y
