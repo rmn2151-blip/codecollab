@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { ChatWindow } from "@/components/chat/ChatWindow";
+import { OrderPanel } from "@/components/orders/OrderPanel";
 import { Navbar } from "@/components/layout/Navbar";
 import {
   Dialog,
@@ -76,6 +77,12 @@ export default function GroupDetailPage() {
   const [group, setGroup] = useState<any>(null);
   const [members, setMembers] = useState<any[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
+  const [orderItems, setOrderItems] = useState<any[]>([]);
+  const [leaderPayment, setLeaderPayment] = useState<{
+    display_name?: string;
+    venmo_username?: string | null;
+    zelle_handle?: string | null;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
 
   const isLeader = group?.leader_id === user?.id;
@@ -88,7 +95,7 @@ export default function GroupDetailPage() {
 
     const { data: groupData } = await supabase
       .from("groups")
-      .select("*, restaurants(name, accepts_flex_dollars, uber_eats_url, doordash_url, grubhub_url)")
+      .select("*, restaurants(name, accepts_flex_dollars, uber_eats_url, doordash_url, grubhub_url), tip, delivery_fee")
       .eq("id", groupId)
       .single();
     setGroup(groupData);
@@ -105,6 +112,22 @@ export default function GroupDetailPage() {
       .eq("group_id", groupId)
       .order("created_at", { ascending: true });
     setMessages(messageData || []);
+
+    const { data: orderData } = await supabase
+      .from("order_items")
+      .select("id, item_name, price, user_id, created_at, profiles(display_name)")
+      .eq("group_id", groupId)
+      .order("created_at", { ascending: true });
+    setOrderItems(orderData || []);
+
+    if (groupData?.leader_id) {
+      const { data: leaderProfile } = await supabase
+        .from("profiles")
+        .select("display_name, venmo_username, zelle_handle")
+        .eq("id", groupData.leader_id)
+        .single();
+      setLeaderPayment(leaderProfile || null);
+    }
 
     setLoading(false);
   }, [groupId]);
@@ -145,6 +168,25 @@ export default function GroupDetailPage() {
             .select("user_id, role, profiles(display_name, email)")
             .eq("group_id", groupId)
             .then(({ data }) => setMembers(data || []));
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "order_items", filter: `group_id=eq.${groupId}` },
+        async (payload) => {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("display_name")
+            .eq("id", payload.new.user_id)
+            .single();
+          setOrderItems((prev) => [...prev, { ...payload.new, profiles: profile } as any]);
+        }
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "order_items", filter: `group_id=eq.${groupId}` },
+        (payload) => {
+          setOrderItems((prev) => prev.filter((item) => item.id !== payload.old.id));
         }
       )
       .subscribe();
@@ -389,6 +431,23 @@ export default function GroupDetailPage() {
                 })}
               </ul>
             </div>
+
+            {/* Order Panel */}
+            <OrderPanel
+              groupId={groupId}
+              currentUserId={user?.id || ""}
+              members={members}
+              leaderId={group?.leader_id}
+              orderItems={orderItems}
+              isClosed={isClosed}
+              groupName={group?.name}
+              leaderName={leaderPayment?.display_name}
+              leaderVenmo={leaderPayment?.venmo_username}
+              leaderZelle={leaderPayment?.zelle_handle}
+              isLeader={isLeader}
+              tip={group?.tip || 0}
+              deliveryFee={group?.delivery_fee || 0}
+            />
 
             {/* Action Buttons */}
             <div className="space-y-2">
