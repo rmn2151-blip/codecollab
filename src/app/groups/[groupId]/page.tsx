@@ -102,7 +102,7 @@ export default function GroupDetailPage() {
 
     const { data: memberData } = await supabase
       .from("group_members")
-      .select("user_id, role, profiles(display_name, email)")
+      .select("user_id, role, profiles(display_name, email, venmo_username, zelle_handle)")
       .eq("group_id", groupId);
     setMembers(memberData || []);
 
@@ -165,7 +165,7 @@ export default function GroupDetailPage() {
         () => {
           supabase
             .from("group_members")
-            .select("user_id, role, profiles(display_name, email)")
+            .select("user_id, role, profiles(display_name, email, venmo_username, zelle_handle)")
             .eq("group_id", groupId)
             .then(({ data }) => setMembers(data || []));
         }
@@ -404,28 +404,61 @@ export default function GroupDetailPage() {
                 </h2>
               </div>
 
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {members.map((m) => {
                   const name = m.profiles?.display_name || "Unknown";
                   const initials = getInitials(name);
                   const { bg, fg } = colorForInitials(initials);
+                  const venmo = m.profiles?.venmo_username;
+                  const zelle = m.profiles?.zelle_handle;
                   return (
-                    <li key={m.user_id} className="flex items-center gap-2.5 text-sm">
+                    <li key={m.user_id} className="flex items-start gap-2.5 text-sm">
                       <div
-                        className="h-7 w-7 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
+                        className="h-7 w-7 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 mt-0.5"
                         style={{ backgroundColor: bg, color: fg }}
                       >
                         {initials}
                       </div>
-                      <span className="flex-1 truncate" style={{ color: COLORS.ink }}>{name}</span>
-                      {m.role === "leader" && (
-                        <span
-                          className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: COLORS.oliveSoft, color: COLORS.olive }}
-                        >
-                          Leader
-                        </span>
-                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2">
+                          <span className="flex-1 truncate" style={{ color: COLORS.ink }}>{name}</span>
+                          {m.role === "leader" && (
+                            <span
+                              className="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
+                              style={{ backgroundColor: COLORS.oliveSoft, color: COLORS.olive }}
+                            >
+                              Leader
+                            </span>
+                          )}
+                        </div>
+                        {(venmo || zelle) && (
+                          <div className="mt-1 flex flex-wrap gap-1">
+                            {venmo && (
+                              <a
+                                href={`https://venmo.com/${encodeURIComponent(venmo)}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-medium transition hover:opacity-80"
+                                style={{ backgroundColor: "#E8F0FA", color: "#3D95CE" }}
+                                title={`Venmo @${venmo}`}
+                              >
+                                <span className="font-bold">V</span>
+                                <span className="truncate max-w-[100px]">@{venmo}</span>
+                              </a>
+                            )}
+                            {zelle && (
+                              <span
+                                className="inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-medium"
+                                style={{ backgroundColor: "#F0E8FA", color: "#6D1ED4" }}
+                                title={`Zelle: ${zelle}`}
+                              >
+                                <span className="font-bold">Z</span>
+                                <span className="truncate max-w-[100px]">{zelle}</span>
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </li>
                   );
                 })}
