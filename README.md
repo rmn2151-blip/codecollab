@@ -2,6 +2,9 @@
 
 Group restaurant ordering platform for university students. Create groups, pick a restaurant, set dietary restrictions, invite others to join, chat in real-time to decide what to order, and the group leader dissolves the group when the order is placed.
 
+## Demo
+https://drive.google.com/file/d/12NlXWlRDfciQefNBKUtVUqD65-qxw0tB/view?usp=sharing
+
 ## Features
 
 - **Sign up with .edu email** — only university students can access the platform
@@ -159,3 +162,4 @@ npm run test:e2e:ui
 - **Builder A** — Frontend & UX
 - **Builder B** — Backend, Database & Real-time
 - **Builder C** — Integration, Auth & DevOps
+  
